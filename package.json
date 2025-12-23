@@ -1,0 +1,14 @@
+{
+  "name": "playwright-automation-framework",
+  "version": "1.0.0",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.3",
+    "@types/sql.js": "^1.4.9",
+    "mongodb": "^7.0.0",
+    "mongodb-memory-server": "^11.0.1",
+    "sql.js": "^1.13.0",
+    "typescript": "^5.9.3"
+  }
+}

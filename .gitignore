@@ -1,0 +1,14 @@
+# Environment files
+.env
+
+# Editor directories
+.vscode/
+.idea/
+
+# Node.js dependencies
+node_modules/
+
+# Playwright
+/test-results/
+/playwright-report/
+

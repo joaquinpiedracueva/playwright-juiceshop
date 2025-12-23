@@ -1,1 +1,1 @@
-# Test Automation Framework
+# Playwright Automation Framework
