@@ -1,5 +1,37 @@
 # Playwright Automation Framework
 
+## Structure
+
+```
+├── .github/
+│   └── workflows/
+│       └── playwright.yml   # CI workflow for GitHub Actions
+├── .gitignore
+├── README.md
+├── fixtures.ts              # Custom Playwright fixtures with page object injection
+├── package.json             # Dependencies and scripts
+├── package-lock.json
+├── playwright.config.ts     # Test configuration and project definitions
+├── tsconfig.json            # TypeScript configuration
+├── pages/                   # Page Object Model classes
+│   ├── HomePage.ts
+│   ├── DynamicIdPage.ts
+│   └── ...
+├── tests/
+│   ├── ui.spec.ts           # Cross-browser UI tests
+│   ├── api.spec.ts          # REST API tests
+│   ├── accessibility.spec.ts # axe-core a11y tests
+│   ├── visual.spec.ts       # Screenshot comparison tests
+│   ├── sql.spec.ts          # SQLite CRUD tests
+│   └── nosql.spec.ts        # MongoDB CRUD tests
+├── baselines/               # Visual regression baseline images
+│   ├── HomePage.png
+│   ├── DynamicIdPage.png
+│   └── ...
+├── test-results/            # Test execution artifacts
+└── playwright-report/       # HTML report output
+```
+
 ## Commands
 
 ```bash
