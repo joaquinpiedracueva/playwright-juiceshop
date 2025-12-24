@@ -1,21 +1,15 @@
 import { defineConfig, devices } from '@playwright/test';
 
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '../.env'), quiet: true });
-
-const browsers = [
-  { name: 'chromium', use: devices['Desktop Chrome'] },
-  { name: 'firefox', use: devices['Desktop Firefox'] },
-  { name: 'webkit', use: devices['Desktop Safari'] },
-];
-
 export default defineConfig({
   testDir: './tests',
+  snapshotPathTemplate: 'baselines/{arg}{ext}',
   fullyParallel: true,
+  expect: {
+    toHaveScreenshot: { maxDiffPixelRatio: 0.03 },
+  },
   forbidOnly: process.env.CI ? true : false,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : 1,
+  retries: process.env.CI ? 1 : 0,
+  workers: process.env.CI ? 1 : 3,
   reporter: process.env.CI ? 'github' : 'html',
   use: { ...devices['Desktop Chrome'] },
   projects: [
@@ -36,32 +30,82 @@ export default defineConfig({
       testMatch: 'sql.spec.ts',
     },
 
-    // Browser-based projects
-    ...browsers.flatMap(browser => [
-      {
-        name: `ui-${browser.name}`,
-        testMatch: 'ui.spec.ts',
-        use: {
-          ...browser.use,
-          baseURL: 'http://uitestingplayground.com/',
-        },
+    // UI tests
+    {
+      name: 'ui-chromium',
+      testMatch: 'ui.spec.ts',
+      use: {
+        ...devices['Desktop Chrome'],
+        baseURL: 'http://uitestingplayground.com/',
       },
-      {
-        name: `accessibility-${browser.name}`,
-        testMatch: 'accessibility.spec.ts',
-        use: {
-          ...browser.use,
-          baseURL: 'https://a11y.me/',
-        },
+    },
+    {
+      name: 'ui-firefox',
+      testMatch: 'ui.spec.ts',
+      use: {
+        ...devices['Desktop Firefox'],
+        baseURL: 'http://uitestingplayground.com/',
       },
-      {
-        name: `visual-${browser.name}`,
-        testMatch: 'visual.spec.ts',
-        use: {
-          ...browser.use,
-          baseURL: 'http://uitestingplayground.com/',
-        },
+    },
+    {
+      name: 'ui-webkit',
+      testMatch: 'ui.spec.ts',
+      use: {
+        ...devices['Desktop Safari'],
+        baseURL: 'http://uitestingplayground.com/',
       },
-    ]),
+    },
+
+    // Accessibility tests
+    {
+      name: 'accessibility-chromium',
+      testMatch: 'accessibility.spec.ts',
+      use: {
+        ...devices['Desktop Chrome'],
+        baseURL: 'https://a11y.me/',
+      },
+    },
+    {
+      name: 'accessibility-firefox',
+      testMatch: 'accessibility.spec.ts',
+      use: {
+        ...devices['Desktop Firefox'],
+        baseURL: 'https://a11y.me/',
+      },
+    },
+    {
+      name: 'accessibility-webkit',
+      testMatch: 'accessibility.spec.ts',
+      use: {
+        ...devices['Desktop Safari'],
+        baseURL: 'https://a11y.me/',
+      },
+    },
+
+    // Visual tests
+    {
+      name: 'visual-chromium',
+      testMatch: 'visual.spec.ts',
+      use: {
+        ...devices['Desktop Chrome'],
+        baseURL: 'http://uitestingplayground.com/',
+      },
+    },
+    {
+      name: 'visual-firefox',
+      testMatch: 'visual.spec.ts',
+      use: {
+        ...devices['Desktop Firefox'],
+        baseURL: 'http://uitestingplayground.com/',
+      },
+    },
+    {
+      name: 'visual-webkit',
+      testMatch: 'visual.spec.ts',
+      use: {
+        ...devices['Desktop Safari'],
+        baseURL: 'http://uitestingplayground.com/',
+      },
+    },
   ],
 });

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../fixtures';
 
 type Method = 'POST' | 'GET' | 'PUT' | 'PATCH' | 'DELETE';
 type Endpoint = '/auth' | '/booking' | '/booking/{id}'| '/ping';
@@ -47,18 +47,6 @@ test.describe('Restful Booker API', () => {
     });
     const body = await response.json();
     token = body.token;
-  });
-
-  test.beforeEach(async () => {
-    // Setup code before each test runs
-  });
-
-  test.afterEach(async () => {
-    // Teardown code after each test runs
-  });
-
-  test.afterAll(async () => {
-    // Teardown code after all tests run
   });
 
   // A simple health check endpoint to confirm whether the API is up and running

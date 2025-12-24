@@ -1,4 +1,4 @@
-import {test, expect} from '@playwright/test';
+import { test, expect } from '../fixtures';
 import { Database } from 'sql.js';
 import initSqlJs from 'sql.js';
 

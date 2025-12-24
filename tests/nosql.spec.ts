@@ -1,6 +1,6 @@
-import {test, expect} from '@playwright/test';
-import {MongoClient, Db} from 'mongodb';
-import {MongoMemoryServer} from 'mongodb-memory-server';
+import { test, expect } from '../fixtures';
+import { MongoClient, Db } from 'mongodb';
+import { MongoMemoryServer } from 'mongodb-memory-server';
 
 type Method = 'CREATE' | 'READ' | 'UPDATE' | 'DELETE';
 type Operation = 'InsertDocuments' | 'FindDocuments' | 'ModifyDocuments' | 'RemoveDocuments';

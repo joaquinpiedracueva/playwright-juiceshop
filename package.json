@@ -1,7 +1,7 @@
 {
   "name": "playwright-automation-framework",
   "version": "1.0.0",
-  "description": "",
+  "description": "Playwright + TypeScript CI-ready framework for cross-browser UI (Page Object Models + custom fixtures), API, accessibility, visual regression, and SQL/NoSQL database testing",
   "devDependencies": {
     "@axe-core/playwright": "^4.11.0",
     "@playwright/test": "^1.57.0",
