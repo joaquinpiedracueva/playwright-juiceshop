@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures';
+import { test, expect } from '../test';
 
 interface BookingData {
   firstname: string;
@@ -28,7 +28,7 @@ function createBookingData(overrides?: Partial<BookingData>): BookingData {
   };
 }
 
-test.describe('Restful Booker API', () => {
+test.describe('API Tests', () => {
   let token: string;
 
   test.beforeAll(async ({ request }) => {

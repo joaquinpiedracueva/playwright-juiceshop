@@ -1,5 +1,4 @@
-# Environment files
-.env
+# Note: .env is intentionally tracked in this repo as it contains only public test credentials from saucedemo.com for demonstration purposes
 
 # Editor directories
 .vscode/

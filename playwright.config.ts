@@ -1,7 +1,14 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+import path from 'path';
+
+dotenv.config({ path: path.resolve(__dirname, '.env'), quiet: true });
 
 export default defineConfig({
-  testDir: './tests',
+  use: {
+    testIdAttribute: 'data-test'
+  },
+  testDir: './specs',
   fullyParallel: true,
   expect: {
     timeout: process.env.CI ? 60000 : 45000,
@@ -13,10 +20,10 @@ export default defineConfig({
   reporter: process.env.CI ? [['github'], ['html']] : [['html']],
   timeout: process.env.CI ? 120000 : 90000,
   projects: [
-    // UI tests
+    // UI Web tests (desktop browsers)
     {
-      name: 'ui-chromium',
-      testMatch: 'ui.spec.ts',
+      name: 'ui-web-chromium',
+      testMatch: 'ui-web.spec.ts',
       snapshotPathTemplate: 'baselines/web/{arg}{ext}',
       use: {
         ...devices['Desktop Chrome'],
@@ -24,8 +31,8 @@ export default defineConfig({
       },
     },
     {
-      name: 'ui-firefox',
-      testMatch: 'ui.spec.ts',
+      name: 'ui-web-firefox',
+      testMatch: 'ui-web.spec.ts',
       snapshotPathTemplate: 'baselines/web/{arg}{ext}',
       use: {
         ...devices['Desktop Firefox'],
@@ -33,8 +40,8 @@ export default defineConfig({
       },
     },
     {
-      name: 'ui-webkit',
-      testMatch: 'ui.spec.ts',
+      name: 'ui-web-webkit',
+      testMatch: 'ui-web.spec.ts',
       snapshotPathTemplate: 'baselines/web/{arg}{ext}',
       use: {
         ...devices['Desktop Safari'],
@@ -77,10 +84,10 @@ export default defineConfig({
       },
     },
 
-    // Mobile tests
+    // UI Mobile tests (mobile viewports)
     {
-      name: 'mobile-chromium',
-      testMatch: 'mobile.spec.ts',
+      name: 'ui-mobile-chromium',
+      testMatch: 'ui-mobile.spec.ts',
       snapshotPathTemplate: 'baselines/mobile/android/{arg}{ext}',
       use: {
         ...devices['Pixel 7'],
@@ -88,8 +95,8 @@ export default defineConfig({
       },
     },
     {
-      name: 'mobile-webkit',
-      testMatch: 'mobile.spec.ts',
+      name: 'ui-mobile-webkit',
+      testMatch: 'ui-mobile.spec.ts',
       snapshotPathTemplate: 'baselines/mobile/ios/{arg}{ext}',
       use: {
         ...devices['iPhone 15'],

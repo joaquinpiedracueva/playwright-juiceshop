@@ -1,7 +1,7 @@
-import { test, expect } from '../fixtures';
+import { test, expect } from '../test';
 import AxeBuilder from '@axe-core/playwright';
 
-test.describe('a11y.me Accessibility', () => {
+test.describe('Accessibility Tests', () => {
 
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
