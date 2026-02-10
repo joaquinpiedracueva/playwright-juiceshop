@@ -10,3 +10,9 @@ node_modules/
 # Playwright
 /test-results/
 /playwright-report/
+
+# Playwright CLI
+.playwright-cli/console-*.log
+
+# Claude
+.claude/settings.local.json

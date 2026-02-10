@@ -1,13 +1,8 @@
 import { test, expect } from '../test';
 
-test.describe('UI Web Tests', () => {
+test.describe('UI Web Login Tests', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-
-  });
-
-  test('should match login page screenshot', async ({ page }) => {
-      await expect(page).toHaveScreenshot('login-page.png');
   });
 
   test('should display error message with locked out user', async ({ loginPage }) => {
@@ -23,7 +18,7 @@ test.describe('UI Web Tests', () => {
     await loginPage.passwordInput.fill(process.env.STANDARD_USER_PASSWORD!);
     await loginPage.loginButton.click();
     await expect(loginPage.errorMessage).toBeHidden();
-    await expect(page).toHaveURL(inventoryPage.url)
+    await expect(page).toHaveURL(inventoryPage.url);
   });
 
   test('should login correctly with problem user', async ({ page, loginPage, inventoryPage }) => {
@@ -31,7 +26,7 @@ test.describe('UI Web Tests', () => {
     await loginPage.passwordInput.fill(process.env.PROBLEM_USER_PASSWORD!);
     await loginPage.loginButton.click();
     await expect(loginPage.errorMessage).toBeHidden();
-    await expect(page).toHaveURL(inventoryPage.url)
+    await expect(page).toHaveURL(inventoryPage.url);
   });
 
   test('should login correctly with performance glitch user', async ({ page, loginPage, inventoryPage }) => {
@@ -39,15 +34,15 @@ test.describe('UI Web Tests', () => {
     await loginPage.passwordInput.fill(process.env.PERFORMANCE_GLITCH_USER_PASSWORD!);
     await loginPage.loginButton.click();
     await expect(loginPage.errorMessage).toBeHidden();
-    await expect(page).toHaveURL(inventoryPage.url)
+    await expect(page).toHaveURL(inventoryPage.url);
   });
 
-   test('should login correctly with error user', async ({ page, loginPage, inventoryPage }) => {
+  test('should login correctly with error user', async ({ page, loginPage, inventoryPage }) => {
     await loginPage.usernameInput.fill(process.env.ERROR_USER!);
     await loginPage.passwordInput.fill(process.env.ERROR_USER_PASSWORD!);
     await loginPage.loginButton.click();
     await expect(loginPage.errorMessage).toBeHidden();
-    await expect(page).toHaveURL(inventoryPage.url)
+    await expect(page).toHaveURL(inventoryPage.url);
   });
 
   test('should login correctly with visual user', async ({ page, loginPage, inventoryPage }) => {
@@ -55,17 +50,7 @@ test.describe('UI Web Tests', () => {
     await loginPage.passwordInput.fill(process.env.VISUAL_USER_PASSWORD!);
     await loginPage.loginButton.click();
     await expect(loginPage.errorMessage).toBeHidden();
-    await expect(page).toHaveURL(inventoryPage.url)
-  });
-
-  test('should display all login page elements', async ({ loginPage }) => {
-    await expect(loginPage.heading).toBeVisible();
-    await expect(loginPage.usernameInput).toBeVisible();
-    await expect(loginPage.passwordInput).toBeVisible();
-    await expect(loginPage.loginButton).toBeVisible();
-    await expect(loginPage.credentialsContainer).toBeVisible();
-    await expect(loginPage.credentialsInfo).toBeVisible();
-    await expect(loginPage.passwordInfo).toBeVisible();
+    await expect(page).toHaveURL(inventoryPage.url);
   });
 
   test('should display error when submitting empty username', async ({ loginPage }) => {
@@ -104,38 +89,5 @@ test.describe('UI Web Tests', () => {
     await expect(loginPage.credentialsInfo).toContainText('error_user');
     await expect(loginPage.credentialsInfo).toContainText('visual_user');
     await expect(loginPage.passwordInfo).toContainText('secret_sauce');
-  });
-
-  test('should display headerComponent elements after login', async ({ loginPage, headerComponent }) => {
-    await loginPage.usernameInput.fill(process.env.STANDARD_USER!);
-    await loginPage.passwordInput.fill(process.env.STANDARD_USER_PASSWORD!);
-    await loginPage.loginButton.click();
-
-    await expect(headerComponent.heading).toBeVisible();
-    await expect(headerComponent.shoppingCartLink).toBeVisible();
-  });
-
-  test('should display footerComponent elements after login', async ({ loginPage, footerComponent }) => {
-    await loginPage.usernameInput.fill(process.env.STANDARD_USER!);
-    await loginPage.passwordInput.fill(process.env.STANDARD_USER_PASSWORD!);
-    await loginPage.loginButton.click();
-
-    await expect(footerComponent.container).toBeVisible();
-    await expect(footerComponent.socialTwitter).toBeVisible();
-    await expect(footerComponent.socialFacebook).toBeVisible();
-    await expect(footerComponent.socialLinkedin).toBeVisible();
-  });
-
-  test('should display inventory page elements', async ({ loginPage, inventoryPage }) => {
-    await loginPage.usernameInput.fill(process.env.STANDARD_USER!);
-    await loginPage.passwordInput.fill(process.env.STANDARD_USER_PASSWORD!);
-    await loginPage.loginButton.click();
-
-    await expect(inventoryPage.title).toBeVisible();
-    await expect(inventoryPage.title).toHaveText('Products');
-    await expect(inventoryPage.sortDropdown).toBeVisible();
-    await expect(inventoryPage.activeSortOption).toHaveText('Name (A to Z)');
-    await expect(inventoryPage.inventoryContainer).toBeVisible();
-    await expect(inventoryPage.inventoryItems).toHaveCount(6);
   });
 });

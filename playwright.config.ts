@@ -16,14 +16,14 @@ export default defineConfig({
   },
   forbidOnly: process.env.CI ? true : false,
   retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 2 : 3,
+  workers: process.env.CI ? 2 : 8,
   reporter: process.env.CI ? [['github'], ['html']] : [['html']],
   timeout: process.env.CI ? 120000 : 90000,
   projects: [
     // UI Web tests (desktop browsers)
     {
       name: 'ui-web-chromium',
-      testMatch: 'ui-web.spec.ts',
+      testMatch: 'ui-web-*.spec.ts',
       snapshotPathTemplate: 'baselines/web/{arg}{ext}',
       use: {
         ...devices['Desktop Chrome'],
@@ -32,7 +32,7 @@ export default defineConfig({
     },
     {
       name: 'ui-web-firefox',
-      testMatch: 'ui-web.spec.ts',
+      testMatch: 'ui-web-*.spec.ts',
       snapshotPathTemplate: 'baselines/web/{arg}{ext}',
       use: {
         ...devices['Desktop Firefox'],
@@ -41,7 +41,7 @@ export default defineConfig({
     },
     {
       name: 'ui-web-webkit',
-      testMatch: 'ui-web.spec.ts',
+      testMatch: 'ui-web-*.spec.ts',
       snapshotPathTemplate: 'baselines/web/{arg}{ext}',
       use: {
         ...devices['Desktop Safari'],
@@ -87,7 +87,7 @@ export default defineConfig({
     // UI Mobile tests (mobile viewports)
     {
       name: 'ui-mobile-chromium',
-      testMatch: 'ui-mobile.spec.ts',
+      testMatch: 'ui-mobile-*.spec.ts',
       snapshotPathTemplate: 'baselines/mobile/android/{arg}{ext}',
       use: {
         ...devices['Pixel 7'],
@@ -96,7 +96,7 @@ export default defineConfig({
     },
     {
       name: 'ui-mobile-webkit',
-      testMatch: 'ui-mobile.spec.ts',
+      testMatch: 'ui-mobile-*.spec.ts',
       snapshotPathTemplate: 'baselines/mobile/ios/{arg}{ext}',
       use: {
         ...devices['iPhone 15'],

@@ -1,12 +1,8 @@
 import { test, expect } from '../test';
 
-test.describe('UI Mobile Tests', () => {
+test.describe('UI Mobile Login Tests', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-  });
-
-  test('should match login page screenshot', async ({ page }) => {
-    await expect(page).toHaveScreenshot('login-page.png');
   });
 
   test('should display error message with locked out user', async ({ loginPage }) => {
