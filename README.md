@@ -1,6 +1,8 @@
 # 🎭 Playwright Automation Framework
 
+[![Playwright Tests](https://github.com/joaquinpiedracueva/test-automation-framework/actions/workflows/playwright.yml/badge.svg)](https://github.com/joaquinpiedracueva/test-automation-framework/actions/workflows/playwright.yml)
 ![Playwright](https://img.shields.io/badge/playwright-v1.58.1-FFFFFF)
+[![Report](https://img.shields.io/badge/Test_Report-GitHub_Pages-blue)](https://joaquinpiedracueva.github.io/test-automation-framework/)
 
 A comprehensive Playwright + TypeScript test automation framework demonstrating cross-browser UI, API, accessibility, and visual regression testing.
 
