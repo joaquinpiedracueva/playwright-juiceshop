@@ -137,16 +137,3 @@ Accessibility: https://a11y.me/
 To add a new environment, create `env/.env.<name>` with `UI_BASE_URL`, `API_BASE_URL`, and `ACCESSIBILITY_BASE_URL`, then run with `ENV=<name>`.
 
 In CI, the workflow defaults to `prod`. Use the **"Run workflow"** button in GitHub Actions to manually trigger a run.
-
-### CI Pipeline
-
-Tests run across **4 shards** in parallel on GitHub Actions. Two levels of fail-fast are configured:
-
-| Level | Setting | Effect |
-| ----- | ------- | ------ |
-| Playwright | `maxFailures: 1` | Stops the shard immediately on first test failure |
-| GitHub Actions | `fail-fast: true` | Cancels remaining shards once any shard fails |
-
-Locally, `maxFailures` is disabled (`0`) so all tests run to completion.
-
-After all shards finish, blob reports are merged into a single HTML report and deployed to [GitHub Pages](https://joaquinpiedracueva.github.io/playwright-automation-framework/).
