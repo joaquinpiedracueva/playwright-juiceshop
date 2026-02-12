@@ -1,2 +1,0 @@
-[    9706ms] [ERROR] Access to fetch at 'https://submit.backtrace.io/UNIVERSE/TOKEN/json' from origin 'https://www.saucedemo.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://www.saucedemo.com/:0
-[    9707ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://submit.backtrace.io/UNIVERSE/TOKEN/json:0

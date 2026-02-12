@@ -12,7 +12,8 @@ node_modules/
 /playwright-report/
 
 # Playwright CLI
-.playwright-cli/console-*.log
+/.playwright-cli
 
 # Claude
-.claude/settings.local.json
+/.claude
+
