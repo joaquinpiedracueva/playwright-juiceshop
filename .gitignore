@@ -17,3 +17,5 @@ node_modules/
 # Claude
 /.claude
 
+# storageState
+./storage-state
