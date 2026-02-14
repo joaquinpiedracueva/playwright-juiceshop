@@ -1,15 +1,21 @@
 import type { Locator, Page } from '@playwright/test';
 
 export class SidebarComponent {
-  readonly inventoryLink: Locator;
-  readonly aboutLink: Locator;
-  readonly logoutLink: Locator;
-  readonly resetLink: Locator;
+  readonly page: Page;
+  readonly heading: Locator;
+  readonly customerFeedbackLink: Locator;
+  readonly aboutUsLink: Locator;
+  readonly photoWallLink: Locator;
+  readonly beginnersTutorialLink: Locator;
+  readonly githubLink: Locator;
 
   constructor(page: Page) {
-    this.inventoryLink = page.getByTestId('inventory-sidebar-link');
-    this.aboutLink = page.getByTestId('about-sidebar-link');
-    this.logoutLink = page.getByTestId('logout-sidebar-link');
-    this.resetLink = page.getByTestId('reset-sidebar-link');
+    this.page = page;
+    this.heading = page.getByRole('heading', { name: 'OWASP Juice Shop' });
+    this.customerFeedbackLink = page.getByLabel('Go to contact us page');
+    this.aboutUsLink = page.getByLabel('Go to about us page');
+    this.photoWallLink = page.getByLabel('Go to photo wall');
+    this.beginnersTutorialLink = page.getByLabel('Launch beginners tutorial');
+    this.githubLink = page.getByLabel('Go to OWASP Juice Shop GitHub page');
   }
 }

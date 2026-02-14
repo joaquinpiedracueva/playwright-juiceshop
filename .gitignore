@@ -1,5 +1,3 @@
-# Note: .env is intentionally tracked in this repo as it contains only public test credentials from saucedemo.com for demonstration purposes
-
 # Editor directories
 .vscode/
 .idea/
@@ -10,12 +8,10 @@ node_modules/
 # Playwright
 /test-results/
 /playwright-report/
-
-# Playwright CLI
 /.playwright-cli
 
 # Claude
 /.claude
 
 # storageState
-./storage-state
+/storage-state
