@@ -1,7 +1,7 @@
 {
-  "name": "playwright-automation-framework",
+  "name": "playwright-juiceshop",
   "version": "1.0.0",
-  "description": "Playwright + TypeScript CI-ready framework for cross-browser UI (Page Object Models + custom fixtures), API, accessibility, and visual regression testing",
+  "description": "End-to-end test automation framework for OWASP Juice Shop built with Playwright and TypeScript",
   "devDependencies": {
     "@axe-core/playwright": "^4.11.0",
     "@playwright/test": "^1.58.2",
