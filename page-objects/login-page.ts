@@ -1,27 +1,38 @@
 import type { Locator, Page } from '@playwright/test';
 
 export class LoginPage {
+  readonly url = '/#/login';
+  readonly page: Page;
   readonly heading: Locator;
-  readonly usernameInput: Locator;
+  readonly emailInput: Locator;
   readonly passwordInput: Locator;
+  readonly showPasswordButton: Locator;
   readonly loginButton: Locator;
-  readonly errorMessage: Locator;
-  readonly errorButton: Locator;
-  readonly loginContainer: Locator;
-  readonly credentialsContainer: Locator;
-  readonly credentialsInfo: Locator;
-  readonly passwordInfo: Locator;
+  readonly rememberMeCheckbox: Locator;
+  readonly forgotPasswordLink: Locator;
+  readonly googleLoginButton: Locator;
+  readonly notYetCustomerLink: Locator;
 
   constructor(page: Page) {
-    this.heading = page.locator('.login_logo').filter({ hasText: 'Swag Labs' });
-    this.usernameInput = page.getByTestId('username');
-    this.passwordInput = page.getByTestId('password');
-    this.loginButton = page.getByTestId('login-button');
-    this.errorMessage = page.getByTestId('error');
-    this.errorButton = page.getByTestId('error-button');
-    this.loginContainer = page.getByTestId('login-container');
-    this.credentialsContainer = page.getByTestId('login-credentials-container');
-    this.credentialsInfo = page.getByTestId('login-credentials');
-    this.passwordInfo = page.getByTestId('login-password');
+    this.page = page;
+    this.heading = page.getByRole('heading', { name: 'Login' });
+    this.emailInput = page.locator('#email');
+    this.passwordInput = page.locator('#password');
+    this.showPasswordButton = page.getByRole('button', { name: 'Button to display the password' });
+    this.loginButton = page.locator('#loginButton');
+    this.rememberMeCheckbox = page.getByLabel('Checkbox to stay logged in or not logged in');
+    this.forgotPasswordLink = page.getByRole('link', { name: 'Forgot your password?' });
+    this.googleLoginButton = page.locator('#loginButtonGoogle');
+    this.notYetCustomerLink = page.getByRole('link', { name: 'Not yet a customer?' });
+  }
+
+  async goto(): Promise<void> {
+    await this.page.goto(this.url);
+  }
+
+  async login(email: string, password: string): Promise<void> {
+    await this.emailInput.fill(email);
+    await this.passwordInput.fill(password);
+    await this.loginButton.click();
   }
 }

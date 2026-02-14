@@ -1,63 +1,38 @@
 import { test as base } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { HomePage } from './page-objects/home-page';
 import { LoginPage } from './page-objects/login-page';
-import { InventoryPage } from './page-objects/inventory-page';
-import { InventoryItemPage } from './page-objects/inventory-item-page';
-import { CartPage } from './page-objects/cart-page';
-import { CheckoutStepOnePage } from './page-objects/checkout-step-one-page';
-import { CheckoutStepTwoPage } from './page-objects/checkout-step-two-page';
-import { CheckoutCompletePage } from './page-objects/checkout-complete-page';
-import { HeaderComponent } from './page-objects/header-component';
+import { RegisterPage } from './page-objects/register-page';
+import { NavComponent } from './page-objects/nav-component';
 import { SidebarComponent } from './page-objects/sidebar-component';
-import { FooterComponent } from './page-objects/footer-component';
 
 type Fixtures = {
   axeBuilder: AxeBuilder;
-  headerComponent: HeaderComponent;
-  sidebarComponent: SidebarComponent;
-  footerComponent: FooterComponent;
+  homePage: HomePage;
   loginPage: LoginPage;
-  inventoryPage: InventoryPage;
-  inventoryItemPage: InventoryItemPage;
-  cartPage: CartPage;
-  checkoutStepOnePage: CheckoutStepOnePage;
-  checkoutStepTwoPage: CheckoutStepTwoPage;
-  checkoutCompletePage: CheckoutCompletePage;
+  registerPage: RegisterPage;
+  navComponent: NavComponent;
+  sidebarComponent: SidebarComponent;
 };
 
 export const test = base.extend<Fixtures>({
-  headerComponent: async ({ page }, use) => {
-    await use(new HeaderComponent(page));
-  },
-  sidebarComponent: async ({ page }, use) => {
-    await use(new SidebarComponent(page));
-  },
-  footerComponent: async ({ page }, use) => {
-    await use(new FooterComponent(page));
-  },
   axeBuilder: async ({ page }, use) => {
     await use(new AxeBuilder({ page }));
+  },
+  homePage: async ({ page }, use) => {
+    await use(new HomePage(page));
   },
   loginPage: async ({ page }, use) => {
     await use(new LoginPage(page));
   },
-  inventoryPage: async ({ page }, use) => {
-    await use(new InventoryPage(page));
+  registerPage: async ({ page }, use) => {
+    await use(new RegisterPage(page));
   },
-  inventoryItemPage: async ({ page }, use) => {
-    await use(new InventoryItemPage(page));
+  navComponent: async ({ page }, use) => {
+    await use(new NavComponent(page));
   },
-  cartPage: async ({ page }, use) => {
-    await use(new CartPage(page));
-  },
-  checkoutStepOnePage: async ({ page }, use) => {
-    await use(new CheckoutStepOnePage(page));
-  },
-  checkoutStepTwoPage: async ({ page }, use) => {
-    await use(new CheckoutStepTwoPage(page));
-  },
-  checkoutCompletePage: async ({ page }, use) => {
-    await use(new CheckoutCompletePage(page));
+  sidebarComponent: async ({ page }, use) => {
+    await use(new SidebarComponent(page));
   },
 });
 

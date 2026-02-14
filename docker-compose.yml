@@ -1,0 +1,5 @@
+services:
+  juice-shop:
+    image: bkimminich/juice-shop:v16.0.1
+    ports:
+      - "3000:3000"
