@@ -2,6 +2,18 @@
   "name": "playwright-juiceshop",
   "version": "1.0.0",
   "description": "End-to-end test automation framework for OWASP Juice Shop built with Playwright and TypeScript",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "test:ui": "npx playwright test --ui",
+    "test:last-failed": "npx playwright test --last-failed",
+    "test:codegen": "npx playwright codegen",
+    "test:report": "npx playwright show-report",
+    "test:update-snapshots": "npx playwright test --update-snapshots",
+    "format": "npx prettier --write .",
+    "format:check": "npx prettier --check ."
+  },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.0",
     "@playwright/cli": "^0.1.0",

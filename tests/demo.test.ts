@@ -5,7 +5,6 @@ test.describe('demo tests', () => {
     await page.goto('/');
   });
   test('should match home page screenshot', async ({ homePage }) => {
-    await homePage.goto();
     await homePage.productCards.first().waitFor();
     await expect(homePage.page).toHaveScreenshot('home-page.png');
   });
@@ -33,4 +32,14 @@ test.describe('demo tests', () => {
     await navComponent.logout();
     await expect(navComponent.shoppingCart).not.toBeVisible();
   });
+  test.skip(
+    'should match home page accessibility guidelines',
+    {
+      annotation: { type: 'issue', description: 'https://github.com/joaquinpiedracueva/playwright-juiceshop/issues/4' },
+    },
+    async ({ axeBuilder }) => {
+      const results = await axeBuilder.analyze();
+      expect(results.violations).toEqual([]);
+    },
+  );
 });
