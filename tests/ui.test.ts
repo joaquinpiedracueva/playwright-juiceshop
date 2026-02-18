@@ -1,6 +1,6 @@
 import { test, expect } from './fixtures';
 
-test.describe('demo tests', () => {
+test.describe('ui tests', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });

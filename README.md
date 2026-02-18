@@ -9,6 +9,8 @@
 
 End-to-end test automation framework for [OWASP Juice Shop](https://demo.owasp-juice.shop/) built with [Playwright](https://playwright.dev/docs/intro) and [TypeScript](https://www.typescriptlang.org/docs/)
 
+The [Issues](https://github.com/joaquinpiedracueva/playwright-juiceshop/issues) page documents known issues found on the OWASP Juice Shop application during automated testing.
+
 ## Requirements
 
 [![Node.js](https://img.shields.io/badge/Node.js-3C873A?logo=nodedotjs&logoColor=E5F2FC)](https://nodejs.org/)
@@ -24,7 +26,3 @@ npx playwright install --with-deps
 # Docker must be running at this point
 npx playwright test
 ```
-
-## Issues
-
-The [Issues](https://github.com/joaquinpiedracueva/playwright-juiceshop/issues) page documents known issues found on the OWASP Juice Shop application during automated testing. You can find them by filtering with the `juice-shop` label.
