@@ -29,11 +29,17 @@ export default defineConfig({
   timeout: process.env.CI ? 120000 : 90000,
   projects: [
     {
+      name: 'api',
+      testDir: './tests/api',
+    },
+    {
       name: 'setup',
+      testDir: './tests/ui',
       testMatch: 'auth.setup.ts',
     },
     {
       name: 'chromium',
+      testDir: './tests/ui',
       dependencies: ['setup'],
       use: {
         ...devices['Desktop Chrome'],

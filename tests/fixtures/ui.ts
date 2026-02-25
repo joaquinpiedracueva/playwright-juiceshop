@@ -1,4 +1,5 @@
-import { test as base } from '@playwright/test';
+import { test as base, expect } from '@playwright/test';
+import type { Page, Locator, TestInfo } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { HomePage } from '../page-objects/home-page';
 import { LoginPage } from '../page-objects/login-page';
@@ -36,5 +37,5 @@ export const test = base.extend<Fixtures>({
   },
 });
 
-export { expect } from '@playwright/test';
-export type { Page, Locator, TestInfo } from '@playwright/test';
+export { expect };
+export type { Page, Locator, TestInfo };

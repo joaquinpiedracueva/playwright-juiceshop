@@ -1,0 +1,98 @@
+openapi: '3.0.0'
+info:
+  title: OWASP Juice Shop Undocumented
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /api/Users/:
+    post:
+      summary: Register
+      requestBody:
+        content:
+          application/json:
+            example:
+              email: user@test.com
+              password: password123
+              passwordRepeat: password123
+              securityQuestion:
+                id: 1
+                question: 'Your eldest siblings middle name?'
+              securityAnswer: John
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              example:
+                status: success
+                data:
+                  username: ''
+                  role: customer
+                  deluxeToken: ''
+                  lastLoginIp: '0.0.0.0'
+                  profileImage: '/assets/public/images/uploads/default.svg'
+                  isActive: true
+                  id: 22
+                  email: user@test.com
+                  updatedAt: '2026-02-25T14:48:10.239Z'
+                  createdAt: '2026-02-25T14:48:10.239Z'
+                  deletedAt: null
+  /rest/user/login:
+    post:
+      summary: Login
+      requestBody:
+        content:
+          application/json:
+            example:
+              email: user@test.com
+              password: password123
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                authentication:
+                  token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...'
+                  bid: 6
+                  umail: user@test.com
+  /rest/user/change-password:
+    get:
+      summary: Change password
+      parameters:
+        - name: current
+          in: query
+          schema:
+            type: string
+          example: oldPassword123
+        - name: new
+          in: query
+          schema:
+            type: string
+          example: newPassword123
+        - name: repeat
+          in: query
+          schema:
+            type: string
+          example: newPassword123
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                user:
+                  id: 26
+                  username: ''
+                  email: user@test.com
+                  password: '1fa938843c2e41700961c7c566258e30'
+                  role: customer
+                  deluxeToken: ''
+                  lastLoginIp: undefined
+                  profileImage: '/assets/public/images/uploads/default.svg'
+                  totpSecret: ''
+                  isActive: true
+                  createdAt: '2026-02-25T16:39:38.615Z'
+                  updatedAt: '2026-02-25T16:41:27.114Z'
+                  deletedAt: null

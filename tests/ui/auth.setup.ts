@@ -1,23 +1,18 @@
 import fs from 'fs';
-import { test as auth, expect } from './fixtures';
+import { test as auth, expect } from '../fixtures/ui';
+import { generateEmail, generatePassword } from '../helpers/generate';
 
 const authFile = '.auth/auth.json';
 
 auth.skip(() => fs.existsSync(authFile), 'auth.json already exists');
 
 auth('register and login user', async ({ page, navComponent, registerPage, loginPage }) => {
-  const email = `user_${Date.now()}@juiceshop.com`;
-  const password = 'validPassword12345';
-
-  // Register
+  const email = generateEmail();
+  const password = generatePassword();
   await registerPage.goto();
   await navComponent.dismissDialogs();
   await registerPage.register(email, password, 'Your eldest siblings middle name?', 'John');
-
-  //Login
   await loginPage.login(email, password);
   await expect(navComponent.shoppingCart).toBeVisible();
-
-  // Save storage state
   await page.context().storageState({ path: authFile });
 });
