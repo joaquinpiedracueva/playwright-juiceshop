@@ -16,7 +16,7 @@ export default defineConfig({
     video: process.env.CI ? 'off' : 'retain-on-failure',
   },
   testDir: './tests',
-  snapshotPathTemplate: 'baselines/{arg}{ext}',
+  snapshotPathTemplate: 'tests/baselines/{arg}{ext}',
   fullyParallel: process.env.CI ? false : true,
   expect: {
     timeout: process.env.CI ? 60000 : 45000,
@@ -33,14 +33,14 @@ export default defineConfig({
       testDir: './tests/api',
     },
     {
-      name: 'setup',
-      testDir: './tests/ui',
-      testMatch: 'auth.setup.ts',
+      name: 'ui-auth',
+      testDir: './tests/setup',
+      testMatch: 'auth.ui.setup.ts',
     },
     {
-      name: 'chromium',
+      name: 'ui',
       testDir: './tests/ui',
-      dependencies: ['setup'],
+      dependencies: ['ui-auth'],
       use: {
         ...devices['Desktop Chrome'],
         storageState: '.auth/auth.json',
