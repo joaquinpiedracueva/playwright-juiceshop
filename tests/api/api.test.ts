@@ -1,7 +1,7 @@
 import { test, expect } from '../fixtures/api';
 import { generateEmail, generatePassword } from '../helpers/generate';
 
-test.describe('API', () => {
+test.describe('application programming interface', () => {
   test('register a new user', async ({ registerUser }) => {
     const email = generateEmail();
     const password = generatePassword();

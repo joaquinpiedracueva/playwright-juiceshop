@@ -7,6 +7,7 @@ export class SidebarComponent {
   readonly customerFeedbackLink: Locator;
   readonly aboutUsLink: Locator;
   readonly photoWallLink: Locator;
+  readonly logoutButton: Locator;
   readonly beginnersTutorialLink: Locator;
   readonly githubLink: Locator;
 
@@ -17,6 +18,7 @@ export class SidebarComponent {
     this.customerFeedbackLink = page.getByLabel('Go to contact us page');
     this.aboutUsLink = page.getByLabel('Go to about us page');
     this.photoWallLink = page.getByLabel('Go to photo wall');
+    this.logoutButton = page.getByLabel('Logout');
     this.beginnersTutorialLink = page.getByLabel('Launch beginners tutorial');
     this.githubLink = page.getByLabel('Go to OWASP Juice Shop GitHub page');
   }
