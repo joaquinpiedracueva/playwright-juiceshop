@@ -1,0 +1,3 @@
+* text=auto
+.playwright-cli/** linguist-generated
+eslint.config.js linguist-detectable=false
