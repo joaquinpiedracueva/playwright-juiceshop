@@ -1,46 +1,46 @@
 - generic [ref=e9]:
-  - generic [ref=e12]:
-    - button "Open Sidenav" [ref=e204] [cursor=pointer]:
-      - img [ref=e15]: menu
-    - button "Back to homepage" [ref=e205] [cursor=pointer]:
-      - img "OWASP Juice Shop" [ref=e206]
-    - generic "Click to search" [ref=e207]:
-      - generic [ref=e20]:
-        - generic:
-          - generic:
+    - generic [ref=e12]:
+        - button "Open Sidenav" [ref=e204] [cursor=pointer]:
+            - img [ref=e15]: menu
+        - button "Back to homepage" [ref=e205] [cursor=pointer]:
+            - img "OWASP Juice Shop" [ref=e206]
+        - generic "Click to search" [ref=e207]:
+            - generic [ref=e20]:
+                - generic:
+                    - generic:
+                        - generic:
+                            - textbox
             - generic:
-              - textbox
-      - generic:
-        - img [ref=e21]: close
-        - img [ref=e22]: search
-    - button "Language selection menu" [ref=e208] [cursor=pointer]:
-      - img [ref=e28]: language
-  - generic [ref=e238]:
-    - heading "Login" [level=1] [ref=e239]
-    - generic [ref=e240]:
-      - generic [ref=e244]:
-        - textbox "Text field for the login email" [ref=e245]
-        - generic:
-          - generic: Email *
-      - generic [ref=e248]:
-        - generic [ref=e249]:
-          - textbox "Text field for the login password" [ref=e250]
-          - generic:
-            - generic: Password *
-        - button "Button to display the password" [ref=e252] [cursor=pointer]:
-          - generic:
-            - generic "Eye"
-      - link "Forgot your password?" [ref=e253] [cursor=pointer]:
-        - /url: "#/forgot-password"
-      - button "Login" [disabled] [ref=e254]:
-        - generic [ref=e255]:
-          - img [ref=e256]: exit_to_app
-          - text: Log in
-      - generic [ref=e258] [cursor=pointer]:
-        - generic [ref=e259]:
-          - checkbox "Checkbox to stay logged in or not logged in" [ref=e260]
-          - generic:
-            - img
-        - generic [ref=e261]: Remember me
-      - link "Not yet a customer?" [ref=e263] [cursor=pointer]:
-        - /url: "#/register"
+                - img [ref=e21]: close
+                - img [ref=e22]: search
+        - button "Language selection menu" [ref=e208] [cursor=pointer]:
+            - img [ref=e28]: language
+    - generic [ref=e238]:
+        - heading "Login" [level=1] [ref=e239]
+        - generic [ref=e240]:
+            - generic [ref=e244]:
+                - textbox "Text field for the login email" [ref=e245]
+                - generic:
+                    - generic: Email *
+            - generic [ref=e248]:
+                - generic [ref=e249]:
+                    - textbox "Text field for the login password" [ref=e250]
+                    - generic:
+                        - generic: Password *
+                - button "Button to display the password" [ref=e252] [cursor=pointer]:
+                    - generic:
+                        - generic "Eye"
+            - link "Forgot your password?" [ref=e253] [cursor=pointer]:
+                - /url: '#/forgot-password'
+            - button "Login" [disabled] [ref=e254]:
+                - generic [ref=e255]:
+                    - img [ref=e256]: exit_to_app
+                    - text: Log in
+            - generic [ref=e258] [cursor=pointer]:
+                - generic [ref=e259]:
+                    - checkbox "Checkbox to stay logged in or not logged in" [ref=e260]
+                    - generic:
+                        - img
+                - generic [ref=e261]: Remember me
+            - link "Not yet a customer?" [ref=e263] [cursor=pointer]:
+                - /url: '#/register'

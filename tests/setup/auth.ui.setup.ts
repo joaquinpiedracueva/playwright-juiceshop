@@ -13,6 +13,6 @@ auth('register and login user', async ({ page, navComponent, registerPage, login
   await navComponent.dismissDialogs();
   await registerPage.register(email, password, 'Your eldest siblings middle name?', 'John');
   await loginPage.login(email, password);
-  await expect(navComponent.shoppingCart).toBeVisible();
+  await navComponent.shoppingCart.waitFor();
   await page.context().storageState({ path: authFile });
 });

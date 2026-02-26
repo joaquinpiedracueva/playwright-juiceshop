@@ -1,26 +1,41 @@
 {
   "name": "playwright-juiceshop",
   "version": "1.0.0",
+  "type": "module",
   "description": "End-to-end test automation framework for OWASP Juice Shop built with Playwright and TypeScript",
   "scripts": {
-    "test": "npx playwright test",
+    "test:all": "npx playwright test",
+    "test:api": "npx playwright test --project api",
+    "test:ui": "npx playwright test --project ui-chromium --project ui-firefox --project ui-webkit --project ui-mobile-pixel --project ui-mobile-iphone",
+    "test:ui:desktop": "npx playwright test --project ui-chromium --project ui-firefox --project ui-webkit",
+    "test:ui:mobile": "npx playwright test --project ui-mobile-pixel --project ui-mobile-iphone",
+    "test:ui:chromium": "npx playwright test --project ui-chromium",
+    "test:ui:firefox": "npx playwright test --project ui-firefox",
+    "test:ui:webkit": "npx playwright test --project ui-webkit",
+    "test:ui:pixel": "npx playwright test --project ui-mobile-pixel",
+    "test:ui:iphone": "npx playwright test --project ui-mobile-iphone",
     "test:headed": "npx playwright test --headed",
     "test:debug": "npx playwright test --debug",
-    "test:ui": "npx playwright test --ui",
     "test:last-failed": "npx playwright test --last-failed",
+    "test:update-snapshots": "npx playwright test --update-snapshots",
     "test:codegen": "npx playwright codegen",
     "test:report": "npx playwright show-report",
-    "test:update-snapshots": "npx playwright test --update-snapshots",
+    "lint": "npx eslint",
+    "format:check": "npx prettier --check .",
     "format": "npx prettier --write .",
-    "format:check": "npx prettier --check ."
+    "prepare": "husky"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.0",
     "@playwright/cli": "^0.1.1",
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.0.3",
+    "eslint": "^10.0.2",
+    "eslint-plugin-playwright": "^2.7.1",
+    "husky": "^9.1.7",
     "playwright": "^1.58.2",
     "prettier": "^3.8.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1"
   }
 }

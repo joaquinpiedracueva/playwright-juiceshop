@@ -19,10 +19,10 @@ The [Issues](https://github.com/joaquinpiedracueva/playwright-juiceshop/issues) 
 ## Installation
 
 ```bash
-git clone https://github.com/joaquinpiedracueva/playwright-juiceshop.git
-cd playwright-juiceshop
-npm install
-npx playwright install --with-deps
+git clone https://github.com/joaquinpiedracueva/playwright-juiceshop.git  # Clone the repository
+cd playwright-juiceshop                                                   # Navigate to the project directory
+npm install                                                               # Install project dependencies
+npx playwright install --with-deps                                        # Install playwright browsers
 ```
 
 ## Usage
@@ -30,4 +30,11 @@ npx playwright install --with-deps
 ```bash
 # Make sure Docker is running
 npx playwright test
+```
+
+## Linting & Formatting
+
+```bash
+npm run lint     # Check for ESLint issues
+npm run format   # Auto-fix formatting with Prettier
 ```

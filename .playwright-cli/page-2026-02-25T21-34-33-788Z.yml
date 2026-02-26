@@ -1,68 +1,68 @@
 - generic [active]:
-  - dialog "cookieconsent" [ref=e1]:
-    - generic [ref=e2]:
-      - text: This website uses fruit cookies to ensure you get the juiciest tracking experience.
-      - button "learn more about cookies" [ref=e3] [cursor=pointer]: But me wait!
-    - button "dismiss cookie message" [ref=e5] [cursor=pointer]: Me want it!
-  - generic [ref=e9]:
-    - generic [ref=e12]:
-      - button [ref=e13] [cursor=pointer]:
-        - img [ref=e15]: menu
-      - button [ref=e16] [cursor=pointer]:
-        - generic [ref=e17]:
-          - img [ref=e18]
-          - text: OWASP Juice Shop
-      - generic [ref=e19]:
-        - img [ref=e21]: close
-        - img [ref=e22]: search
-      - button [ref=e23] [cursor=pointer]:
-        - generic [ref=e24]:
-          - generic [ref=e25]: account_circle
-          - text: Account
-      - button [ref=e26] [cursor=pointer]:
-        - generic [ref=e27]:
-          - img [ref=e28]: language
-          - text: EN
-    - generic [ref=e31]:
-      - generic [ref=e33]: All Products
-      - separator [ref=e34]
-      - group [ref=e35]:
-        - generic [ref=e37]:
-          - generic [ref=e38]:
-            - generic [ref=e39]: "Items per page:"
-            - generic [ref=e40]: "12"
-          - generic [ref=e41]:
-            - generic [ref=e42]: 0 of 0
-            - button [disabled] [ref=e43]:
-              - img [ref=e45]
-            - button [disabled] [ref=e47]:
-              - img [ref=e49]
-  - generic:
-    - dialog [ref=e55]:
-      - generic [ref=e57]:
-        - heading "Welcome to OWASP Juice Shop!" [level=1] [ref=e58]
-        - generic [ref=e59]:
-          - paragraph [ref=e60]:
-            - text: Being a web application with a vast number of intended security vulnerabilities, the
-            - strong [ref=e61]: OWASP Juice Shop
-            - text: "is supposed to be the opposite of a best practice or template application for web developers: It is an awareness, training, demonstration and exercise tool for security risks in modern web applications. The"
-            - strong [ref=e62]: OWASP Juice Shop
-            - text: is an open-source project hosted by the non-profit
-            - link "Open Web Application Security Project (OWASP)" [ref=e63] [cursor=pointer]:
-              - /url: https://owasp.org
-            - text: and is developed and maintained by volunteers. Check out the link below for more information and documentation on the project.
-          - heading "https://owasp-juice.shop" [level=1] [ref=e64]:
-            - link "https://owasp-juice.shop" [ref=e65] [cursor=pointer]:
-              - /url: https://owasp-juice.shop
-        - generic [ref=e66]:
-          - button "Help getting started" [ref=e67] [cursor=pointer]:
-            - generic [ref=e68]:
-              - img [ref=e69]: school
-              - text: Help getting started
-          - button "Close Welcome Banner" [ref=e70] [cursor=pointer]:
-            - generic [ref=e71]:
-              - img [ref=e72]: visibility_off
-              - text: Dismiss
-    - generic [ref=e77]:
-      - generic [ref=e78]: Language has been changed to English
-      - button [ref=e80] [cursor=pointer]: Force page reload
+    - dialog "cookieconsent" [ref=e1]:
+        - generic [ref=e2]:
+            - text: This website uses fruit cookies to ensure you get the juiciest tracking experience.
+            - button "learn more about cookies" [ref=e3] [cursor=pointer]: But me wait!
+        - button "dismiss cookie message" [ref=e5] [cursor=pointer]: Me want it!
+    - generic [ref=e9]:
+        - generic [ref=e12]:
+            - button [ref=e13] [cursor=pointer]:
+                - img [ref=e15]: menu
+            - button [ref=e16] [cursor=pointer]:
+                - generic [ref=e17]:
+                    - img [ref=e18]
+                    - text: OWASP Juice Shop
+            - generic [ref=e19]:
+                - img [ref=e21]: close
+                - img [ref=e22]: search
+            - button [ref=e23] [cursor=pointer]:
+                - generic [ref=e24]:
+                    - generic [ref=e25]: account_circle
+                    - text: Account
+            - button [ref=e26] [cursor=pointer]:
+                - generic [ref=e27]:
+                    - img [ref=e28]: language
+                    - text: EN
+        - generic [ref=e31]:
+            - generic [ref=e33]: All Products
+            - separator [ref=e34]
+            - group [ref=e35]:
+                - generic [ref=e37]:
+                    - generic [ref=e38]:
+                        - generic [ref=e39]: 'Items per page:'
+                        - generic [ref=e40]: '12'
+                    - generic [ref=e41]:
+                        - generic [ref=e42]: 0 of 0
+                        - button [disabled] [ref=e43]:
+                            - img [ref=e45]
+                        - button [disabled] [ref=e47]:
+                            - img [ref=e49]
+    - generic:
+        - dialog [ref=e55]:
+            - generic [ref=e57]:
+                - heading "Welcome to OWASP Juice Shop!" [level=1] [ref=e58]
+                - generic [ref=e59]:
+                    - paragraph [ref=e60]:
+                        - text: Being a web application with a vast number of intended security vulnerabilities, the
+                        - strong [ref=e61]: OWASP Juice Shop
+                        - text: 'is supposed to be the opposite of a best practice or template application for web developers: It is an awareness, training, demonstration and exercise tool for security risks in modern web applications. The'
+                        - strong [ref=e62]: OWASP Juice Shop
+                        - text: is an open-source project hosted by the non-profit
+                        - link "Open Web Application Security Project (OWASP)" [ref=e63] [cursor=pointer]:
+                            - /url: https://owasp.org
+                        - text: and is developed and maintained by volunteers. Check out the link below for more information and documentation on the project.
+                    - heading "https://owasp-juice.shop" [level=1] [ref=e64]:
+                        - link "https://owasp-juice.shop" [ref=e65] [cursor=pointer]:
+                            - /url: https://owasp-juice.shop
+                - generic [ref=e66]:
+                    - button "Help getting started" [ref=e67] [cursor=pointer]:
+                        - generic [ref=e68]:
+                            - img [ref=e69]: school
+                            - text: Help getting started
+                    - button "Close Welcome Banner" [ref=e70] [cursor=pointer]:
+                        - generic [ref=e71]:
+                            - img [ref=e72]: visibility_off
+                            - text: Dismiss
+        - generic [ref=e77]:
+            - generic [ref=e78]: Language has been changed to English
+            - button [ref=e80] [cursor=pointer]: Force page reload
