@@ -20,7 +20,7 @@
     "test:update-snapshots": "npx playwright test --update-snapshots",
     "test:codegen": "npx playwright codegen",
     "test:report": "npx playwright show-report",
-    "lint": "npx eslint",
+    "lint": "npx eslint --max-warnings 0",
     "format:check": "npx prettier --check .",
     "format": "npx prettier --write .",
     "prepare": "husky"
