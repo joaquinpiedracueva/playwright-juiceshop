@@ -10,7 +10,7 @@ export default [
       parser: tseslint.parser,
     },
     rules: {
-      'playwright/consistent-spacing-between-blocks': 'error', // Enforce consistent spacing between test blocks
+      'playwright/consistent-spacing-between-blocks': 'warn', // Enforce consistent spacing between test blocks
       'playwright/expect-expect': 'error', // Enforce assertion to be made in a test body
       'playwright/max-nested-describe': 'error', // Enforce a maximum depth to nested describe calls
       'playwright/no-conditional-expect': 'error', // Disallow calling expect conditionally

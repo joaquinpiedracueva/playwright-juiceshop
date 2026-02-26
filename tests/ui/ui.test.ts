@@ -29,7 +29,6 @@ test.describe('user interface', () => {
     await registerPage.goto();
     await expect(registerPage.page).toHaveScreenshot('register-page.png');
   });
-
   test('should match login page screenshot @desktop-only @screenshot', async ({ loginPage, navComponent }) => {
     await navComponent.logout();
     await loginPage.goto();
