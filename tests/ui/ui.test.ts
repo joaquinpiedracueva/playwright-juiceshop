@@ -34,7 +34,6 @@ test.describe('user interface', () => {
     await loginPage.goto();
     await expect(loginPage.page).toHaveScreenshot('login-page.png');
   });
-
   test('should match home page screenshot @mobile-only @screenshot', async ({ homePage }) => {
     await homePage.productCards.first().waitFor();
     await expect(homePage.page).toHaveScreenshot('home-page.png');
