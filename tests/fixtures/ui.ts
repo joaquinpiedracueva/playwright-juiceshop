@@ -17,6 +17,10 @@ type Fixtures = {
 };
 
 export const test = base.extend<Fixtures>({
+  page: async ({ page }, use) => {
+    await page.goto('/');
+    await use(page);
+  },
   axeBuilder: async ({ page }, use) => {
     await use(new AxeBuilder({ page }));
   },

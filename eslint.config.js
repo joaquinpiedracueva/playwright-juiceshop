@@ -19,7 +19,7 @@ export default [
       '@typescript-eslint/no-floating-promises': 'error', // Require Promise-like statements to be handled
       'playwright/consistent-spacing-between-blocks': 'error', // Enforce consistent spacing between test blocks
       'playwright/expect-expect': 'error', // Enforce assertion to be made in a test body
-      'playwright/max-nested-describe': 'error', // Enforce a maximum depth to nested describe calls
+      'playwright/max-nested-describe': 'off', // Enforce a maximum depth to nested describe calls
       'playwright/no-conditional-expect': 'error', // Disallow calling expect conditionally
       'playwright/no-conditional-in-test': 'error', // Disallow conditional logic in tests
       'playwright/no-element-handle': 'error', // Disallow usage of element handles
@@ -40,17 +40,17 @@ export default [
       'playwright/no-unused-locators': 'error', // Disallow unused page locators
       'playwright/no-wait-for-navigation': 'error', // Disallow usage of page.waitForNavigation()
       'playwright/prefer-web-first-assertions': 'error', // Suggest using web first assertions
-      'playwright/valid-describe-callback': 'error', // Enforce valid describe() callback
+      'playwright/valid-describe-callback': 'off', // Enforce valid describe() callback
       'playwright/valid-expect': 'error', // Enforce valid expect() usage
       'playwright/valid-expect-in-promise': 'error', // Require promises with expectations to be valid
       'playwright/valid-test-tags': 'error', // Enforce valid tag format in test blocks
       'playwright/valid-title': 'error', // Enforce valid titles
       'playwright/max-expects': 'error', // Enforce a maximum number of expects per test
       'playwright/no-commented-out-tests': 'error', // Disallow commented out tests
-      'playwright/no-duplicate-hooks': 'error', // Disallow duplicate setup and teardown hooks
+      'playwright/no-duplicate-hooks': 'off', // Disallow duplicate setup and teardown hooks
       'playwright/no-duplicate-slow': 'error', // Disallow multiple test.slow() calls in the same test
       'playwright/no-get-by-title': 'error', // Disallow using getByTitle()
-      'playwright/no-hooks': 'off', // Disallow setup and teardown hooks
+      'playwright/no-hooks': 'error', // Disallow setup and teardown hooks
       'playwright/no-nth-methods': 'off', // Disallow usage of first(), last(), and nth() methods
       'playwright/no-raw-locators': 'off', // Disallow using raw locators
       'playwright/no-restricted-locators': 'error', // Disallow specific locator methods
@@ -59,8 +59,8 @@ export default [
       'playwright/no-slowed-test': 'error', // Disallow usage of the .slow annotation
       'playwright/prefer-comparison-matcher': 'error', // Suggest using built-in comparison matchers
       'playwright/prefer-equality-matcher': 'error', // Suggest using built-in equality matchers
-      'playwright/prefer-hooks-in-order': 'error', // Prefer having hooks in a consistent order
-      'playwright/prefer-hooks-on-top': 'error', // Suggest having hooks before any test cases
+      'playwright/prefer-hooks-in-order': 'off', // Prefer having hooks in a consistent order
+      'playwright/prefer-hooks-on-top': 'off', // Suggest having hooks before any test cases
       'playwright/prefer-locator': 'error', // Suggest locators over page methods
       'playwright/prefer-lowercase-title': 'error', // Enforce lowercase test names
       'playwright/prefer-native-locators': 'error', // Suggest built-in locators over page.locator()
@@ -74,7 +74,7 @@ export default [
       'playwright/require-tags': 'off', // Require test blocks to have tags
       'playwright/require-to-pass-timeout': 'error', // Require a timeout option for toPass()
       'playwright/require-to-throw-message': 'error', // Require a message for toThrow()
-      'playwright/require-top-level-describe': 'error', // Require test cases and hooks to be inside a describe block
+      'playwright/require-top-level-describe': 'off', // Require test cases and hooks to be inside a describe block
     },
   },
   {

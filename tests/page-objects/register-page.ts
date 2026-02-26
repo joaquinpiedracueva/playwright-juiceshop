@@ -12,6 +12,8 @@ export class RegisterPage {
   readonly registerButton: Locator;
   readonly alreadyCustomerLink: Locator;
   readonly passwordStrengthBar: Locator;
+  readonly snackbarMessage: Locator;
+  readonly snackbarCloseButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -20,11 +22,15 @@ export class RegisterPage {
     this.passwordInput = page.locator('#passwordControl');
     this.repeatPasswordInput = page.locator('#repeatPasswordControl');
     this.showPasswordAdviceToggle = page.getByRole('switch', { name: 'Show password advice' });
-    this.securityQuestionSelect = page.getByLabel('Selection list for the security question');
+    this.securityQuestionSelect = page.getByRole('combobox', { name: 'Selection list for the security question' });
     this.securityAnswerInput = page.locator('#securityAnswerControl');
     this.registerButton = page.locator('#registerButton');
     this.alreadyCustomerLink = page.getByRole('link', { name: 'Already a customer?' });
     this.passwordStrengthBar = page.getByRole('progressbar');
+    this.snackbarMessage = page
+      .locator('snack-bar-container')
+      .getByText('Registration completed successfully. You can now log in.');
+    this.snackbarCloseButton = page.locator('snack-bar-container').getByRole('button', { name: 'X' });
   }
 
   async goto(): Promise<void> {
@@ -36,7 +42,7 @@ export class RegisterPage {
     await this.passwordInput.fill(password);
     await this.repeatPasswordInput.fill(password);
     await this.securityQuestionSelect.click();
-    await this.page.getByText(securityQuestion).click();
+    await this.page.getByRole('option', { name: securityQuestion }).click();
     await this.securityAnswerInput.fill(securityAnswer);
     await this.registerButton.click();
   }

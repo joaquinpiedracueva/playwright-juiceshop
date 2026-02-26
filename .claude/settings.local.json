@@ -1,5 +1,5 @@
 {
   "permissions": {
-    "allow": ["Bash(npx @playwright/cli *)", "Bash(npx playwright test *)"]
+    "allow": ["Bash(npx playwright test *)", "Skill(playwright-cli)", "Skill(playwright-cli:*)"]
   }
 }

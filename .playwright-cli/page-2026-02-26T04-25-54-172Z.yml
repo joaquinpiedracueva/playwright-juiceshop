@@ -1,0 +1,103 @@
+- generic:
+    - dialog "cookieconsent" [ref=e1]:
+        - generic [ref=e2]:
+            - text: This website uses fruit cookies to ensure you get the juiciest tracking experience.
+            - button "learn more about cookies" [ref=e3] [cursor=pointer]: But me wait!
+        - button "dismiss cookie message" [ref=e5] [cursor=pointer]: Me want it!
+    - generic [ref=e9]:
+        - generic [ref=e12]:
+            - button [ref=e13] [cursor=pointer]:
+                - img [ref=e15]: menu
+            - button [ref=e16] [cursor=pointer]:
+                - generic [ref=e17]:
+                    - img [ref=e18]
+                    - text: OWASP Juice Shop
+            - generic [ref=e19]:
+                - img [ref=e21]: close
+                - img [ref=e22]: search
+            - button [ref=e23] [cursor=pointer]:
+                - generic [ref=e24]:
+                    - generic [ref=e25]: account_circle
+                    - text: Account
+            - button [ref=e26] [cursor=pointer]:
+                - generic [ref=e27]:
+                    - img [ref=e28]: language
+                    - text: EN
+        - generic [ref=e31]:
+            - heading [level=1] [ref=e32]: User Registration
+            - generic [ref=e33]:
+                - generic [ref=e37]:
+                    - textbox [ref=e38]
+                    - generic:
+                        - generic: Email *
+                - generic [ref=e40]:
+                    - generic [ref=e42]:
+                        - textbox [ref=e43]
+                        - generic:
+                            - generic: Password *
+                    - generic [ref=e45]:
+                        - generic [ref=e46]:
+                            - img [ref=e47]: exclamation-circle
+                            - emphasis [ref=e49]: Password must be 5-40 characters long.
+                        - generic [ref=e51]: 0/20
+                - generic [ref=e53]:
+                    - generic [ref=e55]:
+                        - textbox [ref=e56]
+                        - generic:
+                            - generic: Repeat Password *
+                    - generic [ref=e60]: 0/40
+                - generic [ref=e62] [cursor=pointer]:
+                    - switch [ref=e64]
+                    - generic [ref=e67]: Show password advice
+                - progressbar [ref=e69]:
+                    - img [ref=e70]
+                - generic [ref=e73]:
+                    - generic [ref=e75]:
+                        - generic [ref=e77] [cursor=pointer]:
+                            - combobox [ref=e78]
+                            - generic:
+                                - generic: Security Question *
+                        - generic [ref=e86]:
+                            - img [ref=e87]: exclamation-circle
+                            - emphasis [ref=e89]: This cannot be changed later!
+                    - generic [ref=e94]:
+                        - textbox [ref=e95]:
+                            - /placeholder: Answer to your security question
+                        - generic:
+                            - generic: Answer *
+                - button [disabled] [ref=e96]:
+                    - generic [ref=e97]:
+                        - generic [ref=e98]: person_add
+                        - text: Register
+                - link [ref=e100] [cursor=pointer]:
+                    - /url: '#/login'
+                    - text: Already a customer?
+    - generic:
+        - dialog [ref=e105]:
+            - generic [ref=e107]:
+                - heading "Welcome to OWASP Juice Shop!" [level=1] [ref=e108]
+                - generic [ref=e109]:
+                    - paragraph [ref=e110]:
+                        - text: Being a web application with a vast number of intended security vulnerabilities, the
+                        - strong [ref=e111]: OWASP Juice Shop
+                        - text: 'is supposed to be the opposite of a best practice or template application for web developers: It is an awareness, training, demonstration and exercise tool for security risks in modern web applications. The'
+                        - strong [ref=e112]: OWASP Juice Shop
+                        - text: is an open-source project hosted by the non-profit
+                        - link "Open Web Application Security Project (OWASP)" [active] [ref=e113] [cursor=pointer]:
+                            - /url: https://owasp.org
+                        - text: and is developed and maintained by volunteers. Check out the link below for more information and documentation on the project.
+                    - heading "https://owasp-juice.shop" [level=1] [ref=e114]:
+                        - link "https://owasp-juice.shop" [ref=e115] [cursor=pointer]:
+                            - /url: https://owasp-juice.shop
+                - generic [ref=e116]:
+                    - button "Help getting started" [ref=e117] [cursor=pointer]:
+                        - generic [ref=e118]:
+                            - img [ref=e119]: school
+                            - text: Help getting started
+                    - button "Close Welcome Banner" [ref=e120] [cursor=pointer]:
+                        - generic [ref=e121]:
+                            - img [ref=e122]: visibility_off
+                            - text: Dismiss
+        - generic [ref=e127]:
+            - generic [ref=e128]: Language has been changed to English
+            - button "Force page reload" [ref=e132] [cursor=pointer]: Force page reload
