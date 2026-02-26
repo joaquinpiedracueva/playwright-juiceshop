@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { test as auth, expect } from '../fixtures/ui';
+import { test as auth } from '../fixtures/ui';
 import { generateEmail, generatePassword } from '../helpers/generate';
 
 const authFile = '.auth/auth.json';

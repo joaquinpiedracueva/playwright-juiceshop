@@ -3,14 +3,21 @@ import tseslint from 'typescript-eslint';
 
 export default [
   {
-    ...playwright.configs['flat/recommended'],
     files: ['tests/**/*.ts'],
     languageOptions: {
-      ...playwright.configs['flat/recommended'].languageOptions,
       parser: tseslint.parser,
+      parserOptions: {
+        projectService: true,
+      },
+    },
+    plugins: {
+      playwright: playwright,
+      '@typescript-eslint': tseslint.plugin,
     },
     rules: {
-      'playwright/consistent-spacing-between-blocks': 'warn', // Enforce consistent spacing between test blocks
+      '@typescript-eslint/no-unused-vars': 'error', // Disallow unused variables
+      '@typescript-eslint/no-floating-promises': 'error', // Require Promise-like statements to be handled
+      'playwright/consistent-spacing-between-blocks': 'error', // Enforce consistent spacing between test blocks
       'playwright/expect-expect': 'error', // Enforce assertion to be made in a test body
       'playwright/max-nested-describe': 'error', // Enforce a maximum depth to nested describe calls
       'playwright/no-conditional-expect': 'error', // Disallow calling expect conditionally

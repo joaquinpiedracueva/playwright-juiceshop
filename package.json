@@ -27,13 +27,11 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.0",
-    "@playwright/cli": "^0.1.1",
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.0.3",
     "eslint": "^10.0.2",
     "eslint-plugin-playwright": "^2.7.1",
     "husky": "^9.1.7",
-    "playwright": "^1.58.2",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1"
