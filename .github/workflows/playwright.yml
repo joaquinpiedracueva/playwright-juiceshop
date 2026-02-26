@@ -26,7 +26,7 @@ jobs:
           - 3000:3000
     strategy:
       matrix:
-        shard: [1/4, 2/4, 3/4, 4/4]
+        shard: [1/2, 2/2]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
