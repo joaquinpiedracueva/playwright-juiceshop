@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playwright Test Reports</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎭</text></svg>"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Playwright Test Reports</h1>
+        <p class="subtitle">
+          <a href="https://github.com/joaquinpiedracueva/playwright-juiceshop"
+            >joaquinpiedracueva/playwright-juiceshop</a
+          >
+        </p>
+      </header>
+
+      <div class="selector" id="selector-section" style="display: none">
+        <label for="report-select">Select report:</label>
+        <select id="report-select"></select>
+        <button class="btn" onclick="openSelected()">Open Report</button>
+      </div>
+
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th>Run</th>
+              <th>Branch</th>
+              <th>Commit</th>
+              <th>Date</th>
+              <th>Trigger</th>
+            </tr>
+          </thead>
+          <tbody id="reports-body"></tbody>
+        </table>
+        <p class="loading" id="loading-msg">Loading reports...</p>
+        <p class="empty" id="empty-msg" style="display: none">No reports available yet.</p>
+      </div>
+
+      <footer>Powered by <a href="https://playwright.dev">Playwright</a></footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
