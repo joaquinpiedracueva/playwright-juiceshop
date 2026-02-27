@@ -82,4 +82,16 @@ Every UI test must have a tag (enforced by ESLint `playwright/require-test-tag`)
 
 ## CI
 
-GitHub Actions workflow shards tests across 2 runners, merges blob reports, and deploys HTML report to GitHub Pages. CI uses single-worker mode, 60s timeouts, and 1 retry. Juice Shop runs as a Docker service container.
+GitHub Actions workflow (`.github/workflows/playwright.yml`) shards tests across 2 runners, merges blob reports, and deploys HTML reports to GitHub Pages. CI uses single-worker mode, 60s timeouts, and 1 retry. Juice Shop runs as a Docker service container.
+
+### Report Deployment
+
+Reports are deployed to the `gh-pages` branch (not via `actions/deploy-pages`). Each CI run stores its report in `reports/<sha7>-<run_number>/` with a `metadata.json` file. A `reports/manifest.json` tracks all reports (max 10, oldest pruned automatically).
+
+The landing page is a static site composed of three files in `.github/pages/`:
+
+- `index.html` — HTML structure
+- `styles.css` — Styling
+- `script.js` — Fetches `reports/manifest.json` and renders the report selector
+
+These files are copied to the `gh-pages` root on each deploy. To change the landing page, edit the files in `.github/pages/`.

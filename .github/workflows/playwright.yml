@@ -7,13 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
+  contents: write
 
 jobs:
   test:
@@ -69,19 +63,108 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
-      - name: Upload report to GitHub Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: playwright-report/
 
   deploy-report:
     if: ${{ !cancelled() }}
     needs: merge-reports
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: deploy-reports
+      cancel-in-progress: false
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          path: main-repo
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+          fetch-depth: 1
+
+      - name: Download merged report
+        uses: actions/download-artifact@v4
+        with:
+          name: playwright-report
+          path: new-report/
+
+      - name: Copy report and write metadata
+        run: |
+          FULL_SHA="${{ github.event.pull_request.head.sha || github.sha }}"
+          SHORT_SHA="${FULL_SHA:0:7}"
+          REPORT_DIR="${SHORT_SHA}-${{ github.run_number }}"
+          echo "REPORT_DIR=${REPORT_DIR}" >> "$GITHUB_ENV"
+
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BRANCH="${{ github.head_ref }}"
+            PR_NUMBER="${{ github.event.pull_request.number }}"
+          else
+            BRANCH="${{ github.ref_name }}"
+            PR_NUMBER=""
+          fi
+
+          COMMIT_MSG=$(git -C main-repo log -1 --format='%s' "$FULL_SHA" 2>/dev/null || echo "")
+
+          mkdir -p "gh-pages/reports/${REPORT_DIR}"
+          cp -r new-report/* "gh-pages/reports/${REPORT_DIR}/"
+
+          jq -n \
+            --arg id "$REPORT_DIR" \
+            --arg sha "$FULL_SHA" \
+            --arg shortSha "$SHORT_SHA" \
+            --arg branch "$BRANCH" \
+            --arg date "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            --arg runNumber "${{ github.run_number }}" \
+            --arg runId "${{ github.run_id }}" \
+            --arg prNumber "$PR_NUMBER" \
+            --arg event "${{ github.event_name }}" \
+            --arg commitMessage "$COMMIT_MSG" \
+            '{
+              id: $id,
+              sha: $sha,
+              shortSha: $shortSha,
+              branch: $branch,
+              date: $date,
+              runNumber: ($runNumber | tonumber),
+              runId: ($runId | tonumber),
+              prNumber: (if $prNumber == "" then null else ($prNumber | tonumber) end),
+              event: $event,
+              commitMessage: $commitMessage
+            }' > "gh-pages/reports/${REPORT_DIR}/metadata.json"
+
+      - name: Update manifest and prune old reports
+        run: |
+          cd gh-pages
+          mkdir -p reports
+          touch reports/manifest.json
+
+          # Build new manifest from all metadata files, sorted by date descending
+          find reports -maxdepth 2 -name "metadata.json" -type f -exec cat {} + \
+            | jq -s 'sort_by(.date) | reverse' > reports/manifest.tmp.json
+
+          # Keep only the 10 most recent reports, prune the rest
+          jq -r '.[10:][] | .id' reports/manifest.tmp.json | while IFS= read -r old_id; do
+            echo "Pruning old report: $old_id"
+            rm -rf "reports/${old_id}"
+          done
+
+          jq '.[0:10]' reports/manifest.tmp.json > reports/manifest.json
+          rm -f reports/manifest.tmp.json
+
+      - name: Copy landing page assets
+        run: cp main-repo/.github/pages/index.html main-repo/.github/pages/styles.css main-repo/.github/pages/script.js gh-pages/
+
+      - name: Push to gh-pages
+        run: |
+          cd gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to deploy"
+          else
+            git commit -m "Deploy report ${REPORT_DIR}"
+            git push origin gh-pages
+          fi
