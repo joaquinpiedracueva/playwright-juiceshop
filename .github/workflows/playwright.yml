@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   test:
-    timeout-minutes: 60
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     services:
       juice-shop:
@@ -66,7 +66,7 @@ jobs:
 
   deploy-report:
     if: ${{ !cancelled() }}
-    needs: merge-reports
+    needs: [test, merge-reports]
     runs-on: ubuntu-latest
     concurrency:
       group: deploy-reports
@@ -121,6 +121,7 @@ jobs:
             --arg prNumber "$PR_NUMBER" \
             --arg event "${{ github.event_name }}" \
             --arg commitMessage "$COMMIT_MSG" \
+            --arg result "${{ needs.test.result }}" \
             '{
               id: $id,
               sha: $sha,
@@ -131,7 +132,8 @@ jobs:
               runId: ($runId | tonumber),
               prNumber: (if $prNumber == "" then null else ($prNumber | tonumber) end),
               event: $event,
-              commitMessage: $commitMessage
+              commitMessage: $commitMessage,
+              result: $result
             }' > "gh-pages/reports/${REPORT_DIR}/metadata.json"
 
       - name: Update manifest and prune old reports

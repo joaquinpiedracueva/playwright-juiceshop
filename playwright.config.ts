@@ -20,14 +20,14 @@ export default defineConfig({
   testDir: './tests',
   fullyParallel: process.env.CI ? false : true,
   expect: {
-    timeout: process.env.CI ? 60000 : 45000,
+    timeout: process.env.CI ? 30000 : 30000,
     toHaveScreenshot: process.env.CI ? { maxDiffPixelRatio: 0.03 } : { maxDiffPixelRatio: 0.03 },
   },
   forbidOnly: process.env.CI ? true : false,
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 1 : 1,
   reporter: process.env.CI ? [['github'], ['blob']] : [['html', { open: 'on-failure' }]],
-  timeout: process.env.CI ? 60000 : 30000,
+  timeout: process.env.CI ? 30000 : 30000,
   projects: [
     {
       name: 'api',

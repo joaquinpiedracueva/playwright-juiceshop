@@ -158,19 +158,26 @@ code {
   font-weight: 500;
 }
 
-.badge-push {
+.badge-passed {
   background: var(--success-subtle);
   color: var(--success-fg);
 }
 
-.badge-pr {
-  background: rgba(56, 139, 253, 0.15);
-  color: var(--accent-fg);
+.badge-failed {
+  background: rgba(248, 81, 73, 0.15);
+  color: var(--danger-fg);
 }
 
-.badge-manual {
+.badge-cancelled {
   background: var(--attention-subtle);
   color: var(--attention-fg);
+}
+
+.badge-push,
+.badge-pr,
+.badge-manual {
+  background: rgba(139, 148, 158, 0.15);
+  color: var(--fg-muted);
 }
 
 .empty {
