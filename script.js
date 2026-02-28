@@ -5,6 +5,18 @@ function openSelected() {
   if (sel.value) window.location.href = 'reports/' + sel.value + '/index.html';
 }
 
+function resultClass(result) {
+  if (result === 'success') return 'badge badge-passed';
+  if (result === 'failure') return 'badge badge-failed';
+  return 'badge badge-cancelled';
+}
+
+function resultLabel(result) {
+  if (result === 'success') return 'Passed';
+  if (result === 'failure') return 'Failed';
+  return 'Cancelled';
+}
+
 function badgeClass(event) {
   if (event === 'pull_request') return 'badge badge-pr';
   if (event === 'workflow_dispatch') return 'badge badge-manual';
@@ -53,6 +65,11 @@ function render(manifest) {
       '/index.html">Run #' +
       r.runNumber +
       '</a></td>' +
+      '<td><span class="' +
+      resultClass(r.result) +
+      '">' +
+      resultLabel(r.result) +
+      '</span></td>' +
       '<td><code>' +
       r.branch +
       '</code></td>' +
