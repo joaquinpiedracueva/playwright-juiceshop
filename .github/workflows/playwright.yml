@@ -123,6 +123,7 @@ jobs:
             --arg event "${{ github.event_name }}" \
             --arg commitMessage "$COMMIT_MSG" \
             --arg commitAuthor "$COMMIT_AUTHOR" \
+            --arg actorLogin "${{ github.actor }}" \
             --arg result "${{ needs.test.result }}" \
             '{
               id: $id,
@@ -136,6 +137,7 @@ jobs:
               event: $event,
               commitMessage: $commitMessage,
               commitAuthor: $commitAuthor,
+              actorLogin: $actorLogin,
               result: $result
             }' > "gh-pages/reports/${REPORT_DIR}/metadata.json"
 
