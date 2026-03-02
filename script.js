@@ -51,18 +51,27 @@ function render(manifest) {
       minute: '2-digit',
     });
     var author = escapeHtml(r.commitAuthor);
+    var authorLink = r.actorLogin
+      ? '<a href="https://github.com/' + encodeURIComponent(r.actorLogin) + '">' + author + '</a>'
+      : author;
+
+    var commitTooltip = r.commitMessage ? ' title="' + escapeHtml(r.commitMessage).replace(/"/g, '&quot;') + '"' : '';
 
     tr.innerHTML =
-      '<td>Run #' +
+      '<td><a href="' +
+      GITHUB_URL +
+      '/actions/runs/' +
+      r.runId +
+      '">#' +
       r.runNumber +
-      '</td>' +
+      '</a></td>' +
       '<td><span class="' +
       resultClass(r.result) +
       '">' +
       resultLabel(r.result) +
       '</span></td>' +
       '<td>' +
-      author +
+      authorLink +
       '</td>' +
       '<td><code>' +
       r.branch +
@@ -71,7 +80,9 @@ function render(manifest) {
       GITHUB_URL +
       '/commit/' +
       r.sha +
-      '">' +
+      '"' +
+      commitTooltip +
+      '>' +
       r.shortSha +
       '</a>' +
       prInfo +
@@ -86,7 +97,7 @@ function render(manifest) {
       '</span></td>' +
       '<td><a class="btn btn-sm" href="reports/' +
       r.id +
-      '/index.html">Open Report</a></td>';
+      '/index.html">Open</a></td>';
     tbody.appendChild(tr);
   });
 }
