@@ -1,10 +1,5 @@
 const GITHUB_URL = 'https://github.com/joaquinpiedracueva/playwright-juiceshop';
 
-function openSelected() {
-  const sel = document.getElementById('report-select');
-  if (sel.value) window.location.href = 'reports/' + sel.value + '/index.html';
-}
-
 function resultClass(result) {
   if (result === 'success') return 'badge badge-passed';
   if (result === 'failure') return 'badge badge-failed';
@@ -29,6 +24,12 @@ function badgeLabel(event) {
   return 'Push';
 }
 
+function escapeHtml(str) {
+  var div = document.createElement('div');
+  div.textContent = str || '';
+  return div.innerHTML;
+}
+
 function render(manifest) {
   document.getElementById('loading-msg').style.display = 'none';
 
@@ -37,39 +38,32 @@ function render(manifest) {
     return;
   }
 
-  document.getElementById('selector-section').style.display = 'flex';
+  var tbody = document.getElementById('reports-body');
 
-  const select = document.getElementById('report-select');
-  const tbody = document.getElementById('reports-body');
-
-  manifest.forEach(function (r, i) {
-    const opt = document.createElement('option');
-    opt.value = r.id;
-    opt.textContent = '#' + r.runNumber + ' \u2014 ' + r.shortSha + ' (' + r.branch + ')';
-    if (i === 0) opt.selected = true;
-    select.appendChild(opt);
-
-    const tr = document.createElement('tr');
-    const prInfo = r.prNumber ? ' <a href="' + GITHUB_URL + '/pull/' + r.prNumber + '">#' + r.prNumber + '</a>' : '';
-    const dateStr = new Date(r.date).toLocaleDateString('en-US', {
+  manifest.forEach(function (r) {
+    var tr = document.createElement('tr');
+    var prInfo = r.prNumber ? ' <a href="' + GITHUB_URL + '/pull/' + r.prNumber + '">#' + r.prNumber + '</a>' : '';
+    var dateStr = new Date(r.date).toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric',
       year: 'numeric',
       hour: '2-digit',
       minute: '2-digit',
     });
+    var author = escapeHtml(r.commitAuthor);
 
     tr.innerHTML =
-      '<td><a href="reports/' +
-      r.id +
-      '/index.html">Run #' +
+      '<td>Run #' +
       r.runNumber +
-      '</a></td>' +
+      '</td>' +
       '<td><span class="' +
       resultClass(r.result) +
       '">' +
       resultLabel(r.result) +
       '</span></td>' +
+      '<td>' +
+      author +
+      '</td>' +
       '<td><code>' +
       r.branch +
       '</code></td>' +
@@ -89,7 +83,10 @@ function render(manifest) {
       badgeClass(r.event) +
       '">' +
       badgeLabel(r.event) +
-      '</span></td>';
+      '</span></td>' +
+      '<td><a class="btn btn-sm" href="reports/' +
+      r.id +
+      '/index.html">Open Report</a></td>';
     tbody.appendChild(tr);
   });
 }

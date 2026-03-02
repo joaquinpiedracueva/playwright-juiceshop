@@ -33,7 +33,7 @@ body {
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -57,37 +57,8 @@ header .subtitle a:hover {
   color: var(--accent-fg);
 }
 
-.selector {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.selector label {
-  font-weight: 500;
-  color: var(--fg-muted);
-}
-
-.selector select {
-  background: var(--bg-subtle);
-  color: var(--fg-default);
-  border: 1px solid var(--border-default);
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-  min-width: 280px;
-}
-
-.selector select:focus {
-  outline: none;
-  border-color: var(--accent-fg);
-}
-
 .btn {
+  display: inline-block;
   background: var(--accent-emphasis);
   color: #fff;
   border: none;
@@ -96,11 +67,19 @@ header .subtitle a:hover {
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
+  text-decoration: none;
   transition: background 0.2s;
 }
 
 .btn:hover {
   background: var(--accent-fg);
+  text-decoration: none;
+}
+
+.btn-sm {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
 }
 
 .card {
@@ -142,6 +121,14 @@ td a {
 
 td a:hover {
   text-decoration: underline;
+}
+
+td a.btn {
+  color: #fff;
+}
+
+td a.btn:hover {
+  text-decoration: none;
 }
 
 code {
@@ -211,8 +198,5 @@ footer a:hover {
 @media (max-width: 700px) {
   .card {
     overflow-x: auto;
-  }
-  .selector select {
-    min-width: 200px;
   }
 }

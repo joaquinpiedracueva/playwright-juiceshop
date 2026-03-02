@@ -106,6 +106,7 @@ jobs:
           fi
 
           COMMIT_MSG=$(git -C main-repo log -1 --format='%s' "$FULL_SHA" 2>/dev/null || echo "")
+          COMMIT_AUTHOR=$(git -C main-repo log -1 --format='%an' "$FULL_SHA" 2>/dev/null || echo "")
 
           mkdir -p "gh-pages/reports/${REPORT_DIR}"
           cp -r new-report/* "gh-pages/reports/${REPORT_DIR}/"
@@ -121,6 +122,7 @@ jobs:
             --arg prNumber "$PR_NUMBER" \
             --arg event "${{ github.event_name }}" \
             --arg commitMessage "$COMMIT_MSG" \
+            --arg commitAuthor "$COMMIT_AUTHOR" \
             --arg result "${{ needs.test.result }}" \
             '{
               id: $id,
@@ -133,6 +135,7 @@ jobs:
               prNumber: (if $prNumber == "" then null else ($prNumber | tonumber) end),
               event: $event,
               commitMessage: $commitMessage,
+              commitAuthor: $commitAuthor,
               result: $result
             }' > "gh-pages/reports/${REPORT_DIR}/metadata.json"
 
