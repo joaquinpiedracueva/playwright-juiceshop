@@ -1,5 +1,19 @@
 [
   {
+    "id": "0f42335-55",
+    "sha": "0f423359f28207f23a80ee562a15655b2ce26ef3",
+    "shortSha": "0f42335",
+    "branch": "main",
+    "date": "2026-03-02T13:59:38Z",
+    "runNumber": 55,
+    "runId": 22579137090,
+    "prNumber": null,
+    "event": "push",
+    "commitMessage": "Add author/report columns, remove selector",
+    "commitAuthor": "joaquinpiedracueva",
+    "result": "success"
+  },
+  {
     "id": "71aad8d-54",
     "sha": "71aad8d34823c8a48f4ad2302a7e82af98c71293",
     "shortSha": "71aad8d",
