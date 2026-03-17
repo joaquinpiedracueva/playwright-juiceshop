@@ -1,6 +1,6 @@
 import fs from 'fs';
+import { faker } from '@faker-js/faker';
 import { test as auth } from '../fixtures/ui';
-import { generateEmail, generatePassword } from '../helpers/generate';
 import { securityQuestions } from '../helpers/security-questions';
 
 const authFile = '.auth/auth.json';
@@ -8,8 +8,8 @@ const authFile = '.auth/auth.json';
 auth.skip(() => fs.existsSync(authFile), 'auth.json already exists');
 
 auth('register and login user', async ({ page, homePage, navComponent, registerPage, loginPage }) => {
-  const email = generateEmail();
-  const password = generatePassword();
+  const email = faker.internet.email();
+  const password = faker.internet.password();
   await homePage.dismissDialogs();
   await registerPage.goto();
   await registerPage.register(

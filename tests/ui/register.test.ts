@@ -1,12 +1,12 @@
+import { faker } from '@faker-js/faker';
 import { test, expect } from '../fixtures/ui';
-import { generateEmail, generatePassword } from '../helpers/generate';
 import { securityQuestions } from '../helpers/security-questions';
 
 test.use({ storageState: { cookies: [], origins: [] } });
 
 test('should register a new user @desktop-only', async ({ homePage, registerPage, loginPage, navComponent }) => {
-  const email = generateEmail();
-  const password = generatePassword();
+  const email = faker.internet.email();
+  const password = faker.internet.password();
   await homePage.dismissDialogs();
   await navComponent.accountMenuButton.click();
   await navComponent.loginMenuButton.click();

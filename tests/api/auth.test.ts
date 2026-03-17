@@ -1,10 +1,10 @@
+import { faker } from '@faker-js/faker';
 import { test, expect } from '../fixtures/api';
-import { generateEmail, generatePassword } from '../helpers/generate';
 import { securityQuestions } from '../helpers/security-questions';
 
 test('register a new user', async ({ request }) => {
-  const email = generateEmail();
-  const password = generatePassword();
+  const email = faker.internet.email();
+  const password = faker.internet.password();
 
   const response = await request.post('/api/Users/', {
     data: {
@@ -25,8 +25,8 @@ test('register a new user', async ({ request }) => {
 });
 
 test('login with valid credentials', async ({ request, registerUser }) => {
-  const email = generateEmail();
-  const password = generatePassword();
+  const email = faker.internet.email();
+  const password = faker.internet.password();
   await registerUser(email, password);
 
   const response = await request.post('/rest/user/login', {
@@ -40,9 +40,9 @@ test('login with valid credentials', async ({ request, registerUser }) => {
 });
 
 test('change password', async ({ request, registerUser, loginUser }) => {
-  const email = generateEmail();
-  const password = generatePassword();
-  const newPassword = generatePassword();
+  const email = faker.internet.email();
+  const password = faker.internet.password();
+  const newPassword = faker.internet.password();
   await registerUser(email, password);
   const loginResponse = await loginUser(email, password);
   const auth = await loginResponse.json();
