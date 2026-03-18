@@ -5,7 +5,7 @@ import { securityQuestions } from '../helpers/security-questions.helper';
 
 const authFile = '.auth/auth.json';
 
-auth.skip(() => fs.existsSync(authFile), 'auth.json already exists');
+auth.skip(() => fs.existsSync(authFile));
 
 auth('register and login user', async ({ page, homePage, navComponent, registerPage, loginPage }) => {
   const email = faker.internet.email();

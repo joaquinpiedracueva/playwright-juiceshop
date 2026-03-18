@@ -22,6 +22,7 @@ The [Issues](https://github.com/joaquinpiedracueva/playwright-juiceshop/issues) 
 git clone https://github.com/joaquinpiedracueva/playwright-juiceshop.git  # Clone the repository
 cd playwright-juiceshop                                                   # Navigate to the project directory
 npm install                                                               # Install project dependencies
+cp .env.example .env                                                      # Create your local environment file
 npx playwright install --with-deps                                        # Install playwright browsers
 ```
 

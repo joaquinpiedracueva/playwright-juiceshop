@@ -1,16 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
-
-const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
-const AUTH_STATE = '.auth/auth.json';
+import { BASE_URL } from './environments';
 
 export default defineConfig({
-  webServer: {
-    command: 'docker compose up',
-    url: BASE_URL,
-    reuseExistingServer: true,
-    timeout: 30000,
-  },
-  globalTeardown: './tests/global-teardown.ts',
+  globalSetup: './tests/setup/global.setup.ts',
+  globalTeardown: './tests/teardown/global.teardown.ts',
   use: {
     baseURL: BASE_URL,
     screenshot: process.env.CI ? 'only-on-failure' : 'only-on-failure',
@@ -49,7 +42,7 @@ export default defineConfig({
       snapshotPathTemplate: 'tests/baselines/desktop/{arg}{ext}',
       use: {
         ...devices['Desktop Chrome'],
-        storageState: AUTH_STATE,
+        storageState: '.auth/auth.json',
       },
     },
     {
@@ -59,7 +52,7 @@ export default defineConfig({
       grepInvert: [/@mobile-only/, /@screenshot/],
       use: {
         ...devices['Desktop Firefox'],
-        storageState: AUTH_STATE,
+        storageState: '.auth/auth.json',
       },
     },
     {
@@ -69,7 +62,7 @@ export default defineConfig({
       grepInvert: [/@mobile-only/, /@screenshot/],
       use: {
         ...devices['Desktop Safari'],
-        storageState: AUTH_STATE,
+        storageState: '.auth/auth.json',
       },
     },
     {
@@ -79,7 +72,7 @@ export default defineConfig({
       grepInvert: [/@desktop-only/, /@screenshot/],
       use: {
         ...devices['Pixel 5'],
-        storageState: AUTH_STATE,
+        storageState: '.auth/auth.json',
       },
     },
     {
@@ -90,7 +83,7 @@ export default defineConfig({
       snapshotPathTemplate: 'tests/baselines/mobile/{arg}{ext}',
       use: {
         ...devices['iPhone 13'],
-        storageState: AUTH_STATE,
+        storageState: '.auth/auth.json',
       },
     },
   ],
