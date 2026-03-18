@@ -1,5 +1,20 @@
 [
   {
+    "id": "f104907-59",
+    "sha": "f1049077aa7d694a500f69bfd49e229c0a1daf5e",
+    "shortSha": "f104907",
+    "branch": "main",
+    "date": "2026-03-18T01:26:24Z",
+    "runNumber": 59,
+    "runId": 23224534787,
+    "prNumber": null,
+    "event": "push",
+    "commitMessage": "Start Docker only if BASE_URL unreachable",
+    "commitAuthor": "joaquinpiedracueva",
+    "actorLogin": "joaquinpiedracueva",
+    "result": "success"
+  },
+  {
     "id": "ff47a29-58",
     "sha": "ff47a297a96f1e633f280069f205daa75a6988f8",
     "shortSha": "ff47a29",
