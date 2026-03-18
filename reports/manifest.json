@@ -1,5 +1,20 @@
 [
   {
+    "id": "ff47a29-58",
+    "sha": "ff47a297a96f1e633f280069f205daa75a6988f8",
+    "shortSha": "ff47a29",
+    "branch": "main",
+    "date": "2026-03-18T01:07:00Z",
+    "runNumber": 58,
+    "runId": 23224041789,
+    "prNumber": null,
+    "event": "push",
+    "commitMessage": "Add ENV config, CI env & global setup",
+    "commitAuthor": "joaquinpiedracueva",
+    "actorLogin": "joaquinpiedracueva",
+    "result": "failure"
+  },
+  {
     "id": "74b1e3b-57",
     "sha": "74b1e3b35aca5d3af5282e81918e28967163f614",
     "shortSha": "74b1e3b",
