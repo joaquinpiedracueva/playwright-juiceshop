@@ -2,7 +2,10 @@ import { execSync } from 'node:child_process';
 import { BASE_URL } from '../../environments';
 
 export default async function globalSetup(): Promise<void> {
-  if (process.env.ENV === 'local') {
+  try {
+    const response = await fetch(BASE_URL);
+    if (response.ok) return;
+  } catch {
     execSync('docker compose up -d', { stdio: 'inherit' });
   }
 
