@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { faker } from '@faker-js/faker';
-import { test as auth } from '../fixtures/ui';
-import { securityQuestions } from '../helpers/security-questions';
+import { test as auth } from '../fixtures/ui.fixture';
+import { securityQuestions } from '../helpers/security-questions.helper';
 
 const authFile = '.auth/auth.json';
 

@@ -1,13 +1,13 @@
-import { test, expect } from '../fixtures/ui';
+import { test, expect } from '../fixtures/ui.fixture';
 
 test('should match home page screenshot @desktop-only @screenshot', async ({ homePage }) => {
   await homePage.productCards.first().waitFor();
-  await expect(homePage.page).toHaveScreenshot('home-page.png');
+  await expect(homePage.page).toHaveScreenshot('home.png');
 });
 
 test('should match nav component screenshot @desktop-only @screenshot', async ({ navComponent }) => {
   await navComponent.accountMenuButton.waitFor();
-  await expect(navComponent.component).toHaveScreenshot('nav-component.png');
+  await expect(navComponent.component).toHaveScreenshot('nav.png');
 });
 
 test('should match sidebar component screenshot @desktop-only @screenshot', async ({
@@ -16,31 +16,31 @@ test('should match sidebar component screenshot @desktop-only @screenshot', asyn
 }) => {
   await navComponent.openSidenavButton.click();
   await sidebarComponent.customerFeedbackLink.waitFor();
-  await expect(sidebarComponent.component).toHaveScreenshot('sidebar-component.png');
+  await expect(sidebarComponent.component).toHaveScreenshot('sidebar.png');
 });
 
 test('should match register page screenshot @desktop-only @screenshot', async ({ registerPage, navComponent }) => {
   await navComponent.logout();
   await registerPage.goto();
   await registerPage.heading.waitFor();
-  await expect(registerPage.page).toHaveScreenshot('register-page.png');
+  await expect(registerPage.page).toHaveScreenshot('register.png');
 });
 
 test('should match login page screenshot @desktop-only @screenshot', async ({ loginPage, navComponent }) => {
   await navComponent.logout();
   await loginPage.goto();
   await loginPage.heading.waitFor();
-  await expect(loginPage.page).toHaveScreenshot('login-page.png');
+  await expect(loginPage.page).toHaveScreenshot('login.png');
 });
 
 test('should match home page screenshot @mobile-only @screenshot', async ({ homePage }) => {
   await homePage.productCards.first().waitFor();
-  await expect(homePage.page).toHaveScreenshot('home-page.png');
+  await expect(homePage.page).toHaveScreenshot('home.png');
 });
 
 test('should match nav component screenshot @mobile-only @screenshot', async ({ navComponent }) => {
   await navComponent.shoppingCart.waitFor();
-  await expect(navComponent.component).toHaveScreenshot('nav-component.png');
+  await expect(navComponent.component).toHaveScreenshot('nav.png');
 });
 
 test('should match sidebar component screenshot @mobile-only @screenshot', async ({
@@ -49,7 +49,7 @@ test('should match sidebar component screenshot @mobile-only @screenshot', async
 }) => {
   await navComponent.openSidenavButton.click();
   await sidebarComponent.customerFeedbackLink.waitFor();
-  await expect(sidebarComponent.component).toHaveScreenshot('sidebar-component.png');
+  await expect(sidebarComponent.component).toHaveScreenshot('sidebar.png');
 });
 
 test('should match register page screenshot @mobile-only @screenshot', async ({
@@ -61,7 +61,7 @@ test('should match register page screenshot @mobile-only @screenshot', async ({
   await sidebarComponent.logoutButton.click();
   await registerPage.goto();
   await registerPage.heading.waitFor();
-  await expect(registerPage.page).toHaveScreenshot('register-page.png');
+  await expect(registerPage.page).toHaveScreenshot('register.png');
 });
 
 test('should match login page screenshot @mobile-only @screenshot', async ({
@@ -73,5 +73,5 @@ test('should match login page screenshot @mobile-only @screenshot', async ({
   await sidebarComponent.logoutButton.click();
   await loginPage.goto();
   await loginPage.heading.waitFor();
-  await expect(loginPage.page).toHaveScreenshot('login-page.png');
+  await expect(loginPage.page).toHaveScreenshot('login.png');
 });

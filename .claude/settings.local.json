@@ -1,5 +1,37 @@
 {
   "permissions": {
-    "allow": ["Bash(npx playwright test *)", "Skill(playwright-cli)", "Skill(playwright-cli:*)"]
+    "allow": [
+      "Bash(npx playwright test *)",
+      "Skill(playwright-cli)",
+      "Skill(playwright-cli:*)",
+      "Bash(mv fixtures/ui.ts fixtures/ui.fixture.ts)",
+      "Bash(mv fixtures/api.ts fixtures/api.fixture.ts)",
+      "Bash(mv page-objects/home-page.ts page-objects/home.page.ts)",
+      "Bash(mv page-objects/login-page.ts page-objects/login.page.ts)",
+      "Bash(mv page-objects/register-page.ts page-objects/register.page.ts)",
+      "Bash(mv page-objects/nav-component.ts page-objects/nav.component.ts)",
+      "Bash(mv page-objects/sidebar-component.ts page-objects/sidebar.component.ts)",
+      "Bash(sed -i '' \"s|from ''../fixtures/ui''|from ''../fixtures/ui.fixture''|g\" tests/ui/login.test.ts tests/ui/register.test.ts tests/ui/screenshot.test.ts tests/ui/logout.test.ts tests/ui/accessibility.test.ts tests/setup/auth.ui.setup.ts)",
+      "Bash(sed -i '' \"s|from ''../fixtures/api''|from ''../fixtures/api.fixture''|g\" tests/api/auth.test.ts)",
+      "Bash(sed -i '' \"s|from ''../page-objects/home-page''|from ''../page-objects/home.page''|g\" tests/fixtures/ui.fixture.ts)",
+      "Bash(sed -i '' \"s|from ''../page-objects/login-page''|from ''../page-objects/login.page''|g\" tests/fixtures/ui.fixture.ts)",
+      "Bash(sed -i '' \"s|from ''../page-objects/register-page''|from ''../page-objects/register.page''|g\" tests/fixtures/ui.fixture.ts)",
+      "Bash(sed -i '' \"s|from ''../page-objects/nav-component''|from ''../page-objects/nav.component''|g\" tests/fixtures/ui.fixture.ts)",
+      "Bash(sed -i '' \"s|from ''../page-objects/sidebar-component''|from ''../page-objects/sidebar.component''|g\" tests/fixtures/ui.fixture.ts)",
+      "Bash(mv page-objects/nav.component.ts page-objects/nav.page.ts)",
+      "Bash(mv page-objects/sidebar.component.ts page-objects/sidebar.page.ts)",
+      "Bash(sed -i '' \"s|from ''../page-objects/nav.component''|from ''../page-objects/nav.page''|g\" tests/fixtures/ui.fixture.ts)",
+      "Bash(sed -i '' \"s|from ''../page-objects/sidebar.component''|from ''../page-objects/sidebar.page''|g\" tests/fixtures/ui.fixture.ts)",
+      "Bash(mv desktop/nav-component.png desktop/nav.page.png)",
+      "Bash(mv desktop/sidebar-component.png desktop/sidebar.page.png)",
+      "Bash(mv desktop/login-page.png desktop/login.page.png)",
+      "Bash(mv desktop/register-page.png desktop/register.page.png)",
+      "Bash(mv desktop/home-page.png desktop/home.page.png)",
+      "Bash(mv mobile/nav-component.png mobile/nav.page.png)",
+      "Bash(mv mobile/sidebar-component.png mobile/sidebar.page.png)",
+      "Bash(mv mobile/login-page.png mobile/login.page.png)",
+      "Bash(mv mobile/register-page.png mobile/register.page.png)",
+      "Bash(mv mobile/home-page.png mobile/home.page.png)"
+    ]
   }
 }

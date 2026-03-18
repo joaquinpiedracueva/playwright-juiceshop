@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/ui';
+import { test, expect } from '../fixtures/ui.fixture';
 
 test('should logout when authenticated @desktop-only', async ({ navComponent }) => {
   await navComponent.accountMenuButton.click();

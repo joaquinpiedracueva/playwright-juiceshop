@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/ui';
+import { test, expect } from '../fixtures/ui.fixture';
 
 test.fixme(
   'should match home page accessibility guidelines @desktop-only',

@@ -1,7 +1,7 @@
 import type { Locator, Page } from '@playwright/test';
+import { BasePage } from './base.page';
 
-export class SidebarComponent {
-  readonly page: Page;
+export class SidebarPage extends BasePage {
   readonly component: Locator;
   readonly heading: Locator;
   readonly customerFeedbackLink: Locator;
@@ -12,7 +12,7 @@ export class SidebarComponent {
   readonly githubLink: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.component = page.locator('mat-sidenav');
     this.heading = page.getByRole('heading', { name: 'OWASP Juice Shop' });
     this.customerFeedbackLink = page.getByLabel('Go to contact us page');

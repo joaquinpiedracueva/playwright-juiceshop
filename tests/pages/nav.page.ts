@@ -1,7 +1,7 @@
 import type { Locator, Page } from '@playwright/test';
+import { BasePage } from './base.page';
 
-export class NavComponent {
-  readonly page: Page;
+export class NavPage extends BasePage {
   readonly component: Locator;
   readonly openSidenavButton: Locator;
   readonly homeButton: Locator;
@@ -17,7 +17,7 @@ export class NavComponent {
   readonly logoutMenuButton: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.component = page.locator('mat-toolbar').filter({ hasText: 'menu OWASP Juice Shop close' });
     this.openSidenavButton = page.getByRole('button', { name: 'Open Sidenav' });
     this.homeButton = page.getByRole('button', { name: 'Back to homepage' });

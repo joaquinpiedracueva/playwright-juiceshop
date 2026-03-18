@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
-import { test, expect } from '../fixtures/ui';
-import { securityQuestions } from '../helpers/security-questions';
+import { test, expect } from '../fixtures/ui.fixture';
+import { securityQuestions } from '../helpers/security-questions.helper';
 
 test.use({ storageState: { cookies: [], origins: [] } });
 
